@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../../scripts/scriptBaseIngredientes.js"></script>    
+    <link rel="stylesheet" href="../../css/styleBaseIngredientes.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Base Ingredientes</title>
+</head>
+
+<body onload="cargarGrilla()">
+
+
+    <div class="sidebar">
+        <nav>
+            <ul>
+                
+                <li id="item-menu">
+                   
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container" id="contenedor">
+        <div class="encabezado">
+            <header>Base Ingredientes Principal</header>
+        </div>
+
+        <br>
+        <div>            
+            <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('','', '', '','','','Insertar')" ; />
+        </div>
+        <br><br>
+        <div id="grillaBaseIngredientes">
+            <table id="tablaBaseIngredientes">
+                <thead>
+                    <tr>
+                        <th>Id Base Ingrediente</th>
+                        <th>Id Ingrediente</th>
+                        <th>Descripción Base</th>                        
+                        <th>Id Base</th>                        
+                        <th>Id Unidad</th>                        
+                        <th>Cantidad</th>                        
+                        <th colspan="2">Acción</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <div class="modal" id="myModal">
+
+
+        <div class="contenido-modal">
+            <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>
+           
+            <form action="" >
+                <div>
+
+                    <table class="tablaBaseIngredientes" >
+                        
+                        <header id="titulo" class="encabezado"></header>
+                         <br>
+                            <tr>
+                                <td>
+                                   <label id="lblIdBaseIngrediente">Id Base Ingrediente</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="idBaseIngrediente" readonly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Id Ingrediente
+                                </td>
+                                <td>
+                                    <input type="text" id="idIngrediente" />
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    Descripción Base
+                                </td>
+                                <td>
+                                    <input type="text" id="descripcionBase" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Id Base
+                                </td>
+                                <td>
+                                    <input type="text" id="idBase" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Id Unidad
+                                </td>
+                                <td>
+                                    <input type="text" id="idUnidad" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Cantidad
+                                </td>
+                                <td>
+                                    <input type="text" id="cantidad" />
+                                </td>
+                            </tr>
+                           
+                            <tr>
+                                <td>
+                                    <input type="button" id="accion" class="boton"
+                                            onclick="ejecutarAccion(this.value, idBaseIngrediente.value, idIngrediente.value, descripcionBase.value, idBase.value, idUnidad.value, cantidad.value);" />                                    
+                </div>
+                
+        </form>
+
+    </div>
+    </div>
+
+
+
+</body>
+
+</html>

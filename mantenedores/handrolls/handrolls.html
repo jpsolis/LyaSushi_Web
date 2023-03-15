@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../../scripts/scriptHandrolls.js"></script>    
+    <link rel="stylesheet" href="../../css/styleHandrolls.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Handrolls</title>
+</head>
+
+<body onload="cargarGrilla()">
+
+
+    <div class="sidebar">
+        <nav>
+            <ul>
+                
+                <li id="item-menu">
+                   
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container" id="contenedor">
+        <div class="encabezado">
+            <header>Handrolls Principal</header>
+        </div>
+
+        <br>
+        <div>            
+            <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '','Insertar')" ; />
+        </div>
+        <br><br>
+        <div id="grillaHandroll">
+            <table id="tablaHandroll">
+                <thead>
+                    <tr>
+                        <th>Id Handroll</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th colspan="2">Acción</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <div class="modal" id="myModal">
+
+
+        <div class="contenido-modal">
+            <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>
+           
+            <form action="" >
+                <div>
+
+                    <table class="tablaHandroll" >
+                        
+                         <header id="titulo" class="encabezado"></header>
+                         <br>
+                            <tr>
+                                <td>
+                                   <label id="lblHandroll">Id Handroll</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="idHandroll" readonly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Descripción
+                                </td>
+                                <td>
+                                    <input type="text" id="descripcion" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Precio
+                                </td>
+                                <td>
+                                    <input type="text" id="precio" />
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <input type="button" id="accion" class="boton"
+                                            onclick="ejecutarAccion(this.value, idHandroll.value, descripcion.value, precio.value);" />                                    
+                </div>
+                
+        </form>
+
+    </div>
+    </div>
+
+
+
+</body>
+
+</html>

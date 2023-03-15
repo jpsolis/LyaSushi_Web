@@ -1,0 +1,134 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="../../scripts/scriptBebestible.js"></script>    
+        <link rel="stylesheet" href="../../css/styleBebestible.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+            integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <title>Bebestibles</title>
+    </head>
+
+    <body onload="cargarGrilla()">
+
+
+        <div class="sidebar">
+            <nav>
+                <ul>
+                    
+                    <li id="item-menu">
+                    
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <div class="container" id="contenedor">
+            <div class="encabezado">
+                <header>Bebestible Principal</header>
+            </div>
+
+            <br>
+            <div>            
+                <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '','','','Insertar')" ; />
+            </div>
+            <br><br>
+            <div id="grillaBebestible">
+                <table id="tablaBebestible">
+                    <thead>
+                        <tr>
+                            <th>Id Bebestible</th>
+                            <th>Descripción</th>                        
+                            <th>Precio Unitario</th>                        
+                            <th>Precio</th>                        
+                            <th>Cantidad</th>                        
+                            <th colspan="2">Acción</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+        <div class="modal" id="myModal">
+
+
+            <div class="contenido-modal">
+                <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>
+            
+                <form action="" >
+                    <div>
+
+                        <table class="tablaBebestible" >
+                            
+                            <header id="titulo" class="encabezado"></header>
+                            <br>
+                                <tr>
+                                    <td>
+                                    <label id="lblBebestible">Id Bebestible</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="idBebestible" readonly />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Descripción
+                                    </td>
+                                    <td>
+                                        <input type="text" id="descripcionBebestible" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Precio Unitario
+                                    </td>
+                                    <td>
+                                        <input type="text" id="precioUnitario" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Precio
+                                    </td>
+                                    <td>
+                                        <input type="text" id="precio" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Cantidad
+                                    </td>
+                                    <td>
+                                        <input type="text" id="cantidad" />
+                                    </td>
+                                </tr>
+                            
+                                <tr>
+                                    <td>
+                                        <input type="button" id="accion" class="boton"
+                                                onclick="ejecutarAccion(this.value, idBebestible.value, descripcionBebestible.value, precioUnitario.value, precio.value, cantidad.value);" />                                    
+                    </div>
+                    
+            </form>
+
+        </div>
+        </div>
+
+
+
+    </body>
+
+    </html>

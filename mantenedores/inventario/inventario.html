@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../../scripts/scriptInventario.js"></script>    
+    <link rel="stylesheet" href="../../css/styleInventario.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Inventario</title>
+</head>
+
+<body onload="cargarGrilla()">
+
+
+    <div class="sidebar">
+        <nav>
+            <ul>
+                
+                <li id="item-menu">
+                   
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container" id="contenedor">
+        <div class="encabezado">
+            <header>Inventario Principal</header>
+        </div>
+
+        <br>
+        <div>            
+            <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('','', '', '', '', '', '', '', 'Insertar')" ; />
+        </div>
+        <br><br>
+        <div id="grillaInventario">
+            <table id="tablaInventario">
+                <thead>
+                    <tr>
+                        <th>Codigo Inventario</th>
+                        <th>Id Proveedor</th>                        
+                        <th>Id Ingrediente</th>                        
+                        <th>Cod Unidad</th>                        
+                        <th>Costo Unitario</th>                        
+                        <th>Cantidad</th>                        
+                        <th>Valor en Inventario</th>                        
+                        <th>Fecha Inventario</th>                        
+                        <th colspan="2">Acción</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <div class="modal" id="myModal">
+
+
+        <div class="contenido-modal">
+            <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>
+           
+            <form action="" >
+                <div>
+
+                    <table class="tablaMenu" >
+                        
+                         <header id="titulo" class="encabezado"></header>
+                         <br>
+                            <tr>
+                                <td>
+                                   <label id="lblcodInventario">Cod Inventario</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="codInventario" readonly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Id Proveedor
+                                </td>
+                                <td>
+                                    <input type="text" id="idProveedor" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Id Ingrediente
+                                </td>
+                                <td>
+                                    <input type="text" id="idIngrediente" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Cod Unidad
+                                </td>
+                                <td>
+                                    <input type="text" id="iCodUnidad" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Costo Unitario
+                                </td>
+                                <td>
+                                    <input type="text" id="costoUnitario" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Cantidad
+                                </td>
+                                <td>
+                                    <input type="text" id="cantidad" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Valor en Inventario
+                                </td>
+                                <td>
+                                    <input type="text" id="valorEnInventario" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Fecha Inventario
+                                </td>
+                                <td>
+                                    <input type="date" id="dFechaInventario"  />
+                                </td>
+                            </tr>
+                           
+                            <tr>
+                                <td>
+                                    <input type="button" id="accion" class="boton"
+                                            onclick="ejecutarAccion(this.value, codInventario.value, idProveedor.value, idIngrediente.value, iCodUnidad.value, costoUnitario.value, cantidad.value, valorEnInventario.value, dFechaInventario.value);" />                                    
+                </div>
+                
+        </form>
+
+    </div>
+    </div>
+
+
+
+</body>
+
+</html>
