@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../../scripts/scriptUsuarios.js"></script>    
+    <link rel="stylesheet" href="../../css/styleUsuarios.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Unidades</title>
+</head>
+
+<body onload="cargarGrilla()">
+
+
+    <div class="sidebar">
+        <nav>
+            <ul>
+                
+                <li id="item-menu">
+                   
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container" id="contenedor">
+        <div class="encabezado">
+            <header>Usuarios Principal</header>
+        </div>
+
+        <br>
+        <div>            
+            <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '','', 'Insertar')" ; />
+        </div>
+        <br><br>
+        <div id="grillaUsuarios">
+            <table id="tablaUsuarios">
+                <thead>
+                    <tr>
+                        <th>Id Usuarios</th>
+                        <th>Usuario</th>                        
+                        <th>Password</th>                        
+                        <th colspan="2">Acción</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <div class="modal" id="myModal">
+
+
+        <div class="contenido-modal">
+            <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>
+           
+            <form action="" >
+                <div>
+
+                    <table class="tablaUnidades" >
+                        
+                         <header id="titulo" class="encabezado"></header>
+                         <br>
+                            <tr>
+                                <td>
+                                   <label id="lblidUsuario">Id Usuario</label>
+                                </td>
+                                <td>
+                                    <input type="text" id="idUsuario" readonly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Nombre usuario
+                                </td>
+                                <td>
+                                    <input type="text" id="nombreUsuario" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Password usuario
+                                </td>
+                                <td>
+                                    <input type="password" id="passUsuario" />
+                                </td>
+                            </tr>
+                           
+                            <tr>
+                                <td>
+                                    <input type="button" id="accion" class="boton"
+                                            onclick="ejecutarAccion(this.value, idUsuario.value, nombreUsuario.value, passUsuario.value);" />                                    
+                </div>
+                
+        </form>
+
+    </div>
+    </div>
+
+
+
+</body>
+
+</html>
