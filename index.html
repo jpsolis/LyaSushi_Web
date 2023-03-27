@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
 	<script type="text/javascript" src="scripts/script.js"></script>
 	<script type="text/javascript" src="scripts/email.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
 </head>
 <body>  
 	 
@@ -27,11 +28,11 @@
 										<div>
 											<h4 class="mb-4 pb-3">Log In</h4>
 											<div class="form-group">
-												<input type="email" name="user" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+												<input type="email" name="user" class="form-style"  placeholder="Your Email" id="logemail" autocomplete="off">
 												<i class="input-icon uil uil-at"></i>
 											</div>	
 											<div class="form-group mt-2">
-												<input type="password" name="password" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+												<input type="password" name="password" class="form-style"  placeholder="Your Password" id="logpass" autocomplete="off">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>
 											<a href="#" class="btn mt-4" style="color: #e7f6f2;" id="submitLogIn" onclick="submitLogin()" >submit</a>

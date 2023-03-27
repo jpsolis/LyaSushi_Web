@@ -1,3 +1,11 @@
+
+
+
+// const CryptoJS = require("crypto-js");
+
+const key = "12345";
+
+
 function modalEditar(idUsuario, nombreUsuario, passUsuario, accion){
    
     var modal = document.getElementById("myModal");
@@ -102,10 +110,21 @@ function ejecutarAccion(accion, idUsuario, nombreUsuario, passUsuario)
         let url = "http://localhost/LyaSushi_Api_v2/Usuario/api/Usuario/Create";
         console.log("URL: " +url);
 
+    //encriptar password
+    var encriptado = CryptoJS.AES.encrypt(passUsuario, "12345");
+
+    
+
+
+        alert("Encruptado: " +encriptado);
+
+    
+
+
         let registro = {
             //"iCodUnidad": iCodUnidad,
             "nombreUsuario": nombreUsuario,
-            "passUsuario": passUsuario      
+            "passUsuario": encriptado.toString()    
        }
 
        let options = {
