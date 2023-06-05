@@ -44,7 +44,7 @@ function ejecutarAccion(accion, idGyosa, descripcionGyosa, precioUnitario, preci
 
         alert("Confirma "+accion+" el registro " +idGyosa+"?")
                
-        let url = "http://localhost/LyaSushi_Api_v2/Gyosa/api/Gyosa/Edit";
+        let url = "https://www.apirestaurant.somee.com/api/Gyosa/Editar/";
         let registro = {
             "idGyosa": idGyosa,
             "descripcionGyosa": descripcionGyosa,        
@@ -72,7 +72,7 @@ function ejecutarAccion(accion, idGyosa, descripcionGyosa, precioUnitario, preci
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +idGyosa+" ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Gyosa/api/Gyosa/Delete/" +idGyosa;
+        let url = "https://www.apirestaurant.somee.com/api/Gyosa/Eliminar/" +idGyosa;
         console.log("URL: " +url);
 
         let registro = {
@@ -103,7 +103,7 @@ function ejecutarAccion(accion, idGyosa, descripcionGyosa, precioUnitario, preci
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Gyosa/api/Gyosa/Create";
+        let url = "https://www.apirestaurant.somee.com/api/Gyosa/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -140,24 +140,24 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tablaGyosas tbody')
 
-    fetch('http://localhost/LyaSushi_Api_v2/Gyosa/api/Gyosa/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Gyosa/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
-     data.forEach(element => {
+     for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
-        <td>${element.idGyosa}</td>
-        <td>${element.descripcionGyosa}</td>        
-        <td>${element.precioUnitario}</td>        
-        <td>${element.precio}</td>        
-        <td>${element.cantidad}</td>        
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${element.idGyosa}', '${element.descripcionGyosa}', '${element.precioUnitario}', '${element.precio}', '${element.cantidad}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${element.idGyosa}', '${element.descripcionGyosa}', '${element.precioUnitario}', '${element.precio}', '${element.cantidad}','Eliminar')"><i class="fa fa-trash"></i></a></td>
+        <td>${data.response[i].idGyosa}</td>
+        <td>${data.response[i].descripcionGyosa}</td>        
+        <td>${data.response[i].precioUnitario}</td>        
+        <td>${data.response[i].precio}</td>        
+        <td>${data.response[i].cantidad}</td>        
+        <td><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idGyosa}', '${data.response[i].descripcionGyosa}', '${data.response[i].precioUnitario}', '${data.response[i].precio}', '${data.response[i].cantidad}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idGyosa}', '${data.response[i].descripcionGyosa}', '${data.response[i].precioUnitario}', '${data.response[i].precio}', '${data.response[i].cantidad}','Eliminar')"><i class="fa fa-trash"></i></a></td>
         `;
 
         tabla.appendChild(fila);
-     });
+     }
    
 });
 
@@ -174,21 +174,21 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);
-      for(let i = 0; i < data.length; i++){
+      for(let i = 0; i < data.response.length; i++){
 
         const row = document.createElement("tr");
 
-        console.log("Descripcion: " +data[i].descripcionMenu)
+        console.log("Descripcion: " +data.response[i].descripcionMenu)
 
         contentHTML +=
 
-        `<a href="${data[i].pathMenu}">
+        `<a href="${data.response[i].pathMenu}">
             <i class="fas fa-home"></i>
-            <p>${data[i].descripcionMenu}</p>
+            <p>${data.response[i].descripcionMenu}</p>
         </a>`;
 
 

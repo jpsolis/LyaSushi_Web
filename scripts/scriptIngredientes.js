@@ -37,11 +37,11 @@ function ejecutarAccion(accion, id, descripcion) {
 
         alert("Confirma " + accion + " el registro " + id + "?")
 
-        let url = "http://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Edit";
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Editar/";
+        
         let registro = {
-            "idHandroll": id,
-            "descripcion": descripcion,
-            "tabHandrollIngredientes": []
+            "idIngrediente": id,
+            "descripcion": descripcion           
         }
 
         let options = {
@@ -53,7 +53,7 @@ function ejecutarAccion(accion, id, descripcion) {
         }
 
         fetch(url, options)
-            .then(response => console.log(response.status))
+            .then(response => alert(response.status))
 
         alert("Registro modificado...")
 
@@ -65,13 +65,12 @@ function ejecutarAccion(accion, id, descripcion) {
     else if (accion == "Eliminar") {
         alert("Confirma " + accion + " el registro " + id + " ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Delete/" + id;
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Eliminar/" + id;
         console.log("URL: " + url);
 
         let registro = {
-            "idHandroll": id,
-            "descripcion": descripcion,
-            "tabHandrollIngredientes": []
+            "idIngrediente": id,
+            "descripcion": descripcion           
         }
 
         let options = {
@@ -95,13 +94,12 @@ function ejecutarAccion(accion, id, descripcion) {
     else {
         alert("Confirma " + accion + " el registro ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Handroll/api/Handroll/Create";
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Guardar/";
         console.log("URL: " + url);
 
         let registro = {
             // "idHandroll": id,
-            "descripcion": descripcion,
-            "tabHandrollIngredientes": []
+            "descripcion": descripcion           
         }
 
         let options = {
@@ -118,11 +116,6 @@ function ejecutarAccion(accion, id, descripcion) {
         alert("Registro ingresado...")
 
         location.reload();
-
-
-
-
-
     }
 }
 
@@ -133,7 +126,7 @@ function cargarGrilla() {
     const tabla = document.querySelector('#tablaIngrediente tbody')
 
     // fetch('http://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Get')
-    fetch('http://www.apirestaurant.somee.com/api/Ingrediente/Lista')
+    fetch('https://www.apirestaurant.somee.com/api/Ingrediente/Lista/')
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
@@ -151,7 +144,7 @@ function cargarGrilla() {
         });
 
     cargarMenu();
-
+    //cargarBarraMenu();
 }
 
 function cargarMenu() {
@@ -161,7 +154,7 @@ function cargarMenu() {
     const itemsMenu = document.querySelector('#item-menu');
 
     // fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
-    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
         .then((response) => response.json())
         .then((data) => {
             console.log("lalala " + data);
@@ -169,7 +162,7 @@ function cargarMenu() {
 
                 const row = document.createElement("tr");
 
-                console.log("Descripcion: " + data.response[i].descripcion)
+                console.log("Descripcion: " + data.response[i].descripcionMenu )
 
                 contentHTML +=
 
@@ -181,15 +174,8 @@ function cargarMenu() {
 
             }
 
-
             itemsMenu.innerHTML = contentHTML;
 
-
-
         });
-
-
-
-
 
 }
