@@ -171,7 +171,6 @@ function cargarGrilla()
      for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
-<<<<<<< HEAD
         <td data-cell="idEnvolturaIngrediente">${data.response[i].idEnvolturaIngrediente}</td>
         <td data-cell="idIngrediente">${data.response[i].idIngrediente}</td>
         <td data-cell="descripcionEnvoltura">${data.response[i].descripcionEnvoltura}</td>
@@ -179,15 +178,6 @@ function cargarGrilla()
             
         <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idEnvolturaIngrediente}', '${data.response[i].idIngrediente}', '${data.response[i].descripcionEnvoltura}', '${data.response[i].idEnvoltura}',  'Editar')">  <i class="fa fa-edit"></i></a></td>
         <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idEnvolturaIngrediente}', '${data.response[i].idIngrediente}', '${data.response[i].descripcionEnvoltura}', '${data.response[i].idEnvoltura}','Eliminar')"><i class="fa fa-trash"></i></a></td>
-=======
-        <td>${data.response[i].idEnvolturaIngrediente}</td>
-        <td>${data.response[i].idIngrediente}</td>
-        <td>${data.response[i].descripcionEnvoltura}</td>        
-        <td>${data.response[i].idEnvoltura}</td>        
-            
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idEnvolturaIngrediente}', '${data.response[i].idEnvoltura}', '${data.response[i].cobroExtra}', '${data.response[i].valorExtra}',  'Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idEnvolturaIngrediente}', '${data.response[i].idEnvoltura}', '${data.response[i].cobroExtra}', '${data.response[i].valorExtra}','Eliminar')"><i class="fa fa-trash"></i></a></td>
->>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
         `;
 
         tabla.appendChild(fila);
