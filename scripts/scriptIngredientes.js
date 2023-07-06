@@ -1,24 +1,14 @@
 function modalEditar(id, desc, accion) {
 
-<<<<<<< HEAD
     var modal = document.getElementById("myModal");   
-=======
-    var modal = document.getElementById("myModal");
->>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
     document.getElementById("titulo").innerText = accion + " registro";
 
     if (accion == "Insertar") {
 
 
-<<<<<<< HEAD
         document.getElementById('lblIdIngrediente').style.display = 'none';
         document.getElementById('idIngrediente').style.display = 'none';
         document.getElementById("accion").value = "Insertar";
-=======
-        document.getElementById('lblIngrediente').style.display = 'none';
-        document.getElementById('idIngrediente').style.display = 'none';
-        document.getElementById('accion').value = "Insertar";
->>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
     }
     else {
         document.getElementById("idIngrediente").value = id;
@@ -133,11 +123,7 @@ function ejecutarAccion(accion, id, descripcion) {
 function cargarGrilla() {
     console.log('cargar grilla ingrediente...')
 
-<<<<<<< HEAD
     const tabla = document.querySelector('#tabla tbody')
-=======
-    const tabla = document.querySelector('#tablaIngrediente tbody')
->>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
 
     // fetch('http://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Get')
     fetch('https://www.apirestaurant.somee.com/api/Ingrediente/Lista/')
@@ -148,17 +134,10 @@ function cargarGrilla() {
             for (let i = 0; i < data.response.length; i++) {
                 const fila = document.createElement('tr');
                 fila.innerHTML += `
-<<<<<<< HEAD
         <td data-cell="idIngrediente">${data.response[i].idIngrediente}</td>
         <td data-cell="descripcion">${data.response[i].descripcion}</td>        
         <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idIngrediente}', '${data.response[i].descripcion}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
         <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idIngrediente}', '${data.response[i].descripcion}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
-=======
-        <td>${data.response[i].idIngrediente}</td>
-        <td>${data.response[i].descripcion}</td>        
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idIngrediente}', '${data.response[i].descripcion}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idIngrediente}', '${data.response[i].descripcion}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
->>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
         `;
                 tabla.appendChild(fila);
             }
