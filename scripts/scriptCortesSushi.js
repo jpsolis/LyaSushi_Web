@@ -145,21 +145,12 @@ function cargarGrilla()
      for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
-<<<<<<< HEAD
         <td data-cell="id cortes sushi">${data.response[i].idCortesSushi}</td>
         <td data-cell="descripcion">${data.response[i].descripcion}</td>                
         <td data-cell="cantidad">${data.response[i].cantidad}</td>        
         <td data-cell="precio">${data.response[i].precio}</td>        
         <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idCortesSushi}', '${data.response[i].descripcion}',  '${data.response[i].cantidad}', '${data.response[i].precio}','Editar')">  <i class="fa fa-edit"></i></a></td>
         <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idCortesSushi}', '${data.response[i].descripcion}', '${data.response[i].cantidad}', '${data.response[i].precio}','Eliminar')"><i class="fa fa-trash"></i></a></td>
-=======
-        <td>${data.response[i].idCortesSushi}</td>
-        <td>${data.response[i].descripcion}</td>                
-        <td>${data.response[i].cantidad}</td>        
-        <td>${data.response[i].precio}</td>        
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idCortesSushi}', '${data.response[i].descripcion}',  '${data.response[i].cantidad}', '${data.response[i].precio}','Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idCortesSushi}', '${data.response[i].descripcion}', '${data.response[i].cantidad}', '${data.response[i].precio}','Eliminar')"><i class="fa fa-trash"></i></a></td>
->>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
         `;
 
         tabla.appendChild(fila);

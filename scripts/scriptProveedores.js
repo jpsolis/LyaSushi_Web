@@ -141,17 +141,10 @@ function cargarGrilla()
      for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
-<<<<<<< HEAD
         <td data-cell="id Proveedor">${data.response[i].idProveedor}</td>
         <td data-cell="descripcion Proveedor">${data.response[i].descripcionProveedor}</td>        
         <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idProveedor}', '${data.response[i].descripcionProveedor}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
         <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idProveedor}', '${data.response[i].descripcionProveedor}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
-=======
-        <td>${data.response[i].idProveedor}</td>
-        <td>${data.response[i].descripcionProveedor}</td>        
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idProveedor}', '${data.response[i].descripcionProveedor}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idProveedor}', '${data.response[i].descripcionProveedor}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
->>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
         `;
 
         tabla.appendChild(fila);
