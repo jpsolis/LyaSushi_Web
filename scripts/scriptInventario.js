@@ -166,13 +166,18 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tabla tbody')
 
+<<<<<<< HEAD
     fetch('https://www.apirestaurant.somee.com/api/InventarioIngrediente/Lista/')
+=======
+    fetch('https://www.apirestaurant.somee.com/api/Inventario/Lista/')
+>>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
      for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
+<<<<<<< HEAD
         <td data-cell="código inventario">${data.response[i].codInventario}</td>
         <td data-cell="id proveedor">${data.response[i].idProveedor}</td>        
         <td data-cell="id ingrediente">${data.response[i].idIngrediente}</td>        
@@ -183,6 +188,18 @@ function cargarGrilla()
         <td data-cell="fecha inventario">${data.response[i].dFechaInventario}</td>        
         <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].codInventario}', '${data.response[i].idProveedor}', '${data.response[i].idIngrediente}', '${data.response[i].iCodUnidad}','${data.response[i].costoUnitario}','${data.response[i].cantidad}','${data.response[i].valorEnInventario}','${data.response[i].dFechaInventario}','Editar')">  <i class="fa fa-edit"></i></a></td>
         <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].codInventario}', '${data.response[i].idProveedor}', '${data.response[i].idIngrediente}', '${data.response[i].iCodUnidad}','${data.response[i].costoUnitario}','${data.response[i].cantidad}','${data.response[i].valorEnInventario}','${data.response[i].dFechaInventario}','Eliminar')"><i class="fa fa-trash"></i></a></td>
+=======
+        <td>${data.response[i].codInventario}</td>
+        <td>${data.response[i].idProveedor}</td>        
+        <td>${data.response[i].idIngrediente}</td>        
+        <td>${data.response[i].iCodUnidad}</td>        
+        <td>${data.response[i].costoUnitario}</td>        
+        <td>${data.response[i].cantidad}</td>        
+        <td>${data.response[i].valorEnInventario}</td>        
+        <td>${data.response[i].dFechaInventario}</td>        
+        <td><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].codInventario}', '${data.response[i].idProveedor}', '${data.response[i].idIngrediente}', '${data.response[i].iCodUnidad}','${data.response[i].costoUnitario}','${data.response[i].cantidad}','${data.response[i].valorEnInventario}','${data.response[i].dFechaInventario}','Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].codInventario}', '${data.response[i].idProveedor}', '${data.response[i].idIngrediente}', '${data.response[i].iCodUnidad}','${data.response[i].costoUnitario}','${data.response[i].cantidad}','${data.response[i].valorEnInventario}','${data.response[i].dFechaInventario}','Eliminar')"><i class="fa fa-trash"></i></a></td>
+>>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
         `;
 
         tabla.appendChild(fila);

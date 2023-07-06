@@ -150,6 +150,7 @@ function cargarGrilla()
      for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
+<<<<<<< HEAD
         <td data-cell="idEmpanada">${data.response[i].idEmpanada}</td>
         <td data-cell="descripcionEmpanada">${data.response[i].descripcionEmpanada}</td>        
         <td data-cell="precioUnitario">${data.response[i].precioUnitario}</td>        
@@ -157,6 +158,15 @@ function cargarGrilla()
         <td data-cell="cantidad">${data.response[i].cantidad}</td>        
         <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idEmpanada}', '${data.response[i].descripcionEmpanada}', '${data.response[i].precioUnitario}', '${data.response[i].precio}', '${data.response[i].cantidad}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
         <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idEmpanada}', '${data.response[i].descripcionEmpanada}', '${data.response[i].precioUnitario}', '${data.response[i].precio}', '${data.response[i].cantidad}','Eliminar')"><i class="fa fa-trash"></i></a></td>
+=======
+        <td>${data.response[i].idEmpanada}</td>
+        <td>${data.response[i].descripcionEmpanada}</td>        
+        <td>${data.response[i].precioUnitario}</td>        
+        <td>${data.response[i].precio}</td>        
+        <td>${data.response[i].cantidad}</td>        
+        <td><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idEmpanada}', '${data.response[i].descripcionEmpanada}', '${data.response[i].precioUnitario}', '${data.response[i].precio}', '${data.response[i].cantidad}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idEmpanada}', '${data.response[i].descripcionEmpanada}', '${data.response[i].precioUnitario}', '${data.response[i].precio}', '${data.response[i].cantidad}','Eliminar')"><i class="fa fa-trash"></i></a></td>
+>>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
         `;
 
         tabla.appendChild(fila);

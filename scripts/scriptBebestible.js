@@ -153,6 +153,7 @@ function cargarGrilla()
      for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
+<<<<<<< HEAD
         <td data-cell="idBebestible">${data.response[i].idBebestible}</td>
         <td data-cell="descripcionBebestible">${data.response[i].descripcionBebestible}</td>        
         <td data-cell="precioUnitario">${data.response[i].precioUnitario}</td>        
@@ -160,6 +161,15 @@ function cargarGrilla()
         <td data-cell="cantidad">${data.response[i].cantidad}</td>        
         <td data-cell="Editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idBebestible}', '${data.response[i].descripcionBebestible}', '${data.response[i].precioUnitario}', '${data.response[i].precio}', '${data.response[i].cantidad}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
         <td data-cell="Eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idBebestible}', '${data.response[i].descripcionBebestible}', '${data.response[i].precioUnitario}', '${data.response[i].precio}', '${data.response[i].cantidad}','Eliminar')"><i class="fa fa-trash"></i></a></td>
+=======
+        <td>${data.response[i].idBebestible}</td>
+        <td>${data.response[i].descripcionBebestible}</td>        
+        <td>${data.response[i].precioUnitario}</td>        
+        <td>${data.response[i].precio}</td>        
+        <td>${data.response[i].cantidad}</td>        
+        <td><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idBebestible}', '${data.response[i].descripcionBebestible}', '${data.response[i].precioUnitario}', '${data.response[i].precio}', '${data.response[i].cantidad}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idBebestible}', '${data.response[i].descripcionBebestible}', '${data.response[i].precioUnitario}', '${data.response[i].precio}', '${data.response[i].cantidad}','Eliminar')"><i class="fa fa-trash"></i></a></td>
+>>>>>>> fae2700c7dfa64f49421eab35148afaf9ae10251
         `;
 
         tabla.appendChild(fila);
