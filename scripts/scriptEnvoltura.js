@@ -1,4 +1,4 @@
-function modalEditar(idEnvoltura, descripcion, cobroExtra, valorExtra, codigoEnvoltura, accion){
+function modalEditar(idEnvolturaIngrediente, idIngrediente, descripcionEnvoltura, idEnvoltura,  accion){
    
     var modal = document.getElementById("myModal");
     document.getElementById("titulo").innerText = accion + " registro";
@@ -8,25 +8,25 @@ function modalEditar(idEnvoltura, descripcion, cobroExtra, valorExtra, codigoEnv
         
         
         document.getElementById('lblEnvoltura').style.display = 'none';        
-        document.getElementById('idEnvoltura').style.display = 'none'; 
+        document.getElementById('idEnvolturaIngrediente').style.display = 'none'; 
         document.getElementById('accion').value = "Insertar";
     }
     else
     {
-        document.getElementById("idEnvoltura").value = idEnvoltura;
-        document.getElementById("descripcion").value = descripcion;
+        document.getElementById("idEnvolturaIngrediente").value = idEnvolturaIngrediente;
+        document.getElementById("idIngrediente").value = idIngrediente;
                 
-        if(cobroExtra === "true"){
-            document.getElementById("cobroExtra").setAttribute('checked', 'checked');     
-        }
-        else{
-           // document.getElementById('cobroExtra').checked = false;      
-           document.getElementById("cobroExtra").removeAttribute('checked');     
+        // if(cobroExtra === "true"){
+        //     document.getElementById("cobroExtra").setAttribute('checked', 'checked');     
+        // }
+        // else{
+        //    // document.getElementById('cobroExtra').checked = false;      
+        //    document.getElementById("cobroExtra").removeAttribute('checked');     
             
-        }
+        // }
 
-        document.getElementById("valorExtra").value = valorExtra;        
-        document.getElementById("codigoEnvoltura").value = codigoEnvoltura;        
+        document.getElementById("descripcionEnvoltura").value = descripcionEnvoltura;        
+        document.getElementById("idEnvoltura").value = idEnvoltura;        
         document.getElementById("accion").value = accion;
     
     }
@@ -43,9 +43,9 @@ function cierreModal(){
     }
 }
 
-function ejecutarAccion(accion, idEnvoltura, descripcion, cobroExtra, valorExtra, codigoEnvoltura)
+function ejecutarAccion(accion, idEnvolturaIngrediente, idIngrediente, descripcionEnvoltura, idEnvoltura)
 {
-    console.log("Ejecutar accion " +accion+ " "+idEnvoltura+" "+descripcion +" "+ cobroExtra +" "+valorExtra+" "+codigoEnvoltura );
+    console.log("Ejecutar accion " +accion+ " "+idEnvolturaIngrediente+" "+idIngrediente +" "+ descripcionEnvoltura +" "+idEnvoltura );
     if(accion == "Editar")
     {
 
@@ -53,13 +53,12 @@ function ejecutarAccion(accion, idEnvoltura, descripcion, cobroExtra, valorExtra
 
         alert("Confirma "+accion+" el registro " +idEnvoltura+"?")
                
-        let url = "http://localhost/LyaSushi_Api_v2/Envoltura/api/Envoltura/Edit";
+        let url = "https://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Editar/";
         let registro = {
-        "idEnvoltura": idEnvoltura,
-        "descripcion": descripcion,        
-        "cobroExtra": cobroExtra,        
-        "valorExtra": valorExtra,        
-        "codigoEnvoltura": codigoEnvoltura     
+            "idEnvolturaIngrediente": idEnvolturaIngrediente,
+            "idIngrediente": idIngrediente,
+            "descripcionEnvoltura": descripcionEnvoltura,
+            "idEnvoltura": idEnvoltura,    
         }
 
         let options = {
@@ -90,15 +89,15 @@ function ejecutarAccion(accion, idEnvoltura, descripcion, cobroExtra, valorExtra
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +idEnvoltura+" ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Envoltura/api/Envoltura/Delete/" +idEnvoltura;
+        let url = "https://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Eliminar/" +idEnvolturaIngrediente;
         console.log("URL: " +url);
 
         let registro = {
-            "idEnvoltura": idEnvoltura,
-            "descripcion": descripcion,        
-            "cobroExtra": cobroExtra,        
-            "valorExtra": valorExtra,        
-            "codigoEnvoltura": codigoEnvoltura   
+            
+            "idEnvolturaIngrediente": idEnvolturaIngrediente,
+            "idIngrediente": idIngrediente,        
+            "descripcionEnvoltura": descripcionEnvoltura,        
+            "idEnvoltura": idEnvoltura,      
        }
 
        let options = {
@@ -125,15 +124,14 @@ function ejecutarAccion(accion, idEnvoltura, descripcion, cobroExtra, valorExtra
 
         alert("Cobro extra: " +cobroExtra);
 
-        let url = "http://localhost/LyaSushi_Api_v2/Envoltura/api/Envoltura/Create";
+        let url = "https://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
            // "idBebestible": idBebestible,
-           "descripcion": descripcion,        
-           "cobroExtra": cobroExtra,        
-           "valorExtra": valorExtra,        
-           "codigoEnvoltura": codigoEnvoltura
+           "idIngrediente": idIngrediente,        
+           "descripcionEnvoltura": descripcionEnvoltura,        
+           "idEnvoltura": idEnvoltura,                  
        }
 
        let options = {
@@ -164,26 +162,26 @@ function cargarGrilla()
     console.log('cargar grilla envoltura...')
    
 
-    const tabla = document.querySelector('#tablaEnvoltura tbody')
+    const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://localhost/LyaSushi_Api_v2/Envoltura/api/Envoltura/Get')
+    fetch('https://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
-     data.forEach(element => {
+     for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
-        <td>${element.idEnvoltura}</td>
-        <td>${element.descripcion}</td>        
-        <td>${element.cobroExtra}</td>        
-        <td>${element.valorExtra}</td>        
-        <td>${element.codigoEnvoltura}</td>        
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${element.idEnvoltura}', '${element.descripcion}', '${element.cobroExtra}', '${element.valorExtra}', '${element.codigoEnvoltura}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${element.idEnvoltura}', '${element.descripcion}', '${element.cobroExtra}', '${element.valorExtra}', '${element.codigoEnvoltura}','Eliminar')"><i class="fa fa-trash"></i></a></td>
+        <td data-cell="idEnvolturaIngrediente">${data.response[i].idEnvolturaIngrediente}</td>
+        <td data-cell="idIngrediente">${data.response[i].idIngrediente}</td>
+        <td data-cell="descripcionEnvoltura">${data.response[i].descripcionEnvoltura}</td>
+        <td data-cell="idEnvoltura">${data.response[i].idEnvoltura}</td>                   
+            
+        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idEnvolturaIngrediente}', '${data.response[i].idIngrediente}', '${data.response[i].descripcionEnvoltura}', '${data.response[i].idEnvoltura}',  'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idEnvolturaIngrediente}', '${data.response[i].idIngrediente}', '${data.response[i].descripcionEnvoltura}', '${data.response[i].idEnvoltura}','Eliminar')"><i class="fa fa-trash"></i></a></td>
         `;
 
         tabla.appendChild(fila);
-     });
+     }
    
 });
 
@@ -200,21 +198,21 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);
-      for(let i = 0; i < data.length; i++){
+     for (let i = 0; i < data.response.length; i++) {
 
         const row = document.createElement("tr");
 
-        console.log("Descripcion: " +data[i].descripcion)
+        console.log("Descripcion: " +data.response[i].descripcionMenu)
 
         contentHTML +=
 
-        `<a href="${data[i].pathMenu}">
+        `<a href="${data.response[i].pathMenu}">
             <i class="fas fa-home"></i>
-            <p>${data[i].descripcionMenu}</p>
+            <p>${data.response[i].descripcionMenu}</p>
         </a>`;
 
 

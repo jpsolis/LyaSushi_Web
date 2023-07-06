@@ -15,12 +15,14 @@ body{
 	line-height: 1.7;
 	/* color: #c4c3ca; */
 	background-color: #1f2029;
+  
   overflow-x: hidden;
-  background-color: #2c3333;
   display: flex;
   justify-content: center;
   margin-top: 5%;
   align-items: center;
+  /* min-height: 100vh; */
+
 }
 a {
 	cursor: pointer;
@@ -138,7 +140,7 @@ header {
 }
 
 .sidebar:hover{
-  width: 260px;
+  width: 200px;
   overflow: visible;
 }
 
@@ -230,21 +232,7 @@ li p{
   color: white;
 }
 
-.container {
-  /* border:red;
- // border-style:double; */
-  width: 65%;
-  /* Full width */
-  height: 65%;
-  /* Full height */
-  background: #eee;
-  box-shadow: 0 8px 8px -4px #A5C9CA;
-  justify-content: center;
 
-
-
-
-}
 
 
 
@@ -256,42 +244,147 @@ th {
 
 
 .modal {
+  
   display: none;
-  /* Hidden by default */
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
+  position: absolute;
+  float: left;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #FFFFFF;
+}
+
+.modal h2{
+  background-color: #395b64;
+}
+
+
+.form{
+  
+  
+  margin: auto;
+  width: 90%;
+  max-width: 400px;
+  padding: 4.5em 3em;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px -5px rgb(0 0 0 / 30%);
+}
+
+.form_title{
+  font-size: 2rem;
+  margin-bottom: .5em;
+  
+}
+
+.form__group{
+  position: relative;
+  --color: #5757577e;
+}
+
+.form__container{
+  margin-top: 3em;
+  display: grid;
+  gap: 2.5em;
+}
+
+.container {
  
-  /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
+  width: 65%;
+  /* Full width */
+  height: 65%;
+  /* Full height */
+  background: #eee;
+  box-shadow: 0 8px 8px -4px #A5C9CA;
+  
+  
+
+  
+
+
+
+
 }
 
-.modal p {
-  font-weight: bold;
-  background-color: #2C3333;
-  padding: 8px;
+.form__input{
+  width: 100%;
+  background: none;
+  color: #706c6c;
+  font-size: 1rem;
+  padding: .6em .3em;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--color);
 }
 
-/* Modal Content/Box */
-.contenido-modal {
-  background-color: white;
-  margin: 15% auto;
-  /* 15% from the top and centered */
-  padding: 0;
-  border: 1px solid #888;
-  width: 50%;
-  /* Could be more or less, depending on screen size */
+
+.form__input:not(:placeholder-shown){
+  color: #4d4646;
 }
+
+.form__input:focus + .form__label,
+.form__input:not(:placeholder-shown) + .form__label{
+  transform: translateY(-12px) scale(.7);
+  transform-origin: left top;
+  color: #3866f2;
+}
+
+.form__label{
+  color: var(--color);
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 5px;
+  transform: translateY(10px);
+  transition: transform .5s, color .3s;
+}
+
+.form__line{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #3866f2;
+  transform: scale(0);
+  transform: left bottom;
+  transition: transform .4s;
+}
+
+.form__input:focus ~ .form__line,
+.form__input:not(:placeholder-shown) ~ .form__line{
+  transform: scale(1);
+}
+
+@media (max-width:650px) {
+  .form__title{
+    font-size: 1.8rem;   
+  }
+
+  #tabla th{
+    display: none;
+  }
+  #tabla td{
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+
+  #tabla td:first-child{
+    padding-top: 2rem;
+  }
+
+  #tabla td:last-child{
+    padding-bottom: 2rem;
+  }
+
+  #tabla td::before{
+    content: attr(data-cell) ": ";
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+ 
+}
+
+
 
 /* The Close Button */
 .cierre {
@@ -312,33 +405,38 @@ th {
   cursor: pointer;
 }
 
-#tablaIngrediente {
+#tabla {
+  
   border: 1px solid #1C6EA4;
   background-color: #EEEEEE;
   width: 100%;
   text-align: left;
   border-collapse: collapse;
+
 }
 
 
-#tablaIngrediente td,
-#tablaIngrediente th {
+#tabla td,
+#tabla th {
   border: 1px solid #AAAAAA;
   padding: 3px 2px;
+  text-align: center;
+  
+ 
 
 }
 
 
 
-#tablaIngrediente tbody td {
+#tabla tbody td {
   font-size: 13px;
 }
 
-#tablaIngrediente tr:nth-child(even) {
+#tabla tr:nth-child(even) {
   background: #A5C9CA;
 }
 
-#tablaIngrediente thead {
+#tabla thead {
   background: #1C6EA4;
   background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
   background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
@@ -346,18 +444,18 @@ th {
   border-bottom: 2px solid #444444;
 }
 
-#tablaIngrediente thead th {
-  font-size: 15px;
+#tabla thead th {
+  font-size: 13px;
   font-weight: bold;
   color: #FFFFFF;
   border-left: 2px solid #D0E4F5;
 }
 
-#tablaIngrediente thead th:first-child {
+#tabla thead th:first-child {
   border-left: none;
 }
 
-#tablaIngrediente tfoot {
+#tabla tfoot {
   font-size: 14px;
   font-weight: bold;
   color: #FFFFFF;
@@ -368,15 +466,15 @@ th {
   border-top: 2px solid #444444;
 }
 
-#tablaIngrediente tfoot td {
+#tabla tfoot td {
   font-size: 14px;
 }
 
-#tablaIngrediente tfoot .links {
+#tabla tfoot .links {
   text-align: right;
 }
 
-#tablaIngrediente tfoot .links a {
+#tabla tfoot .links a {
   display: inline-block;
   background: #1C6EA4;
   color: #FFFFFF;

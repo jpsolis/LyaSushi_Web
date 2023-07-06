@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="../../scripts/scriptMenu.js"></script>    
-    <link rel="stylesheet" href="../../css/styleMenu.css" />
+    <script type="text/javascript" src="../../scripts/scriptMenu.js"></script>      
+    <link rel="stylesheet" href="../../css/styleIngredientes.css" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <title>Unidades</title>
+    <title>Menu</title>
 </head>
 
 <body onload="cargarGrilla()">
@@ -37,8 +38,8 @@
             <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '', 'Insertar')" ; />
         </div>
         <br><br>
-        <div id="grillaMenu">
-            <table id="tablaMenu">
+        <div id="grilla">
+            <table id="tabla">
                 <thead>
                     <tr>
                         <th>Id Menu</th>

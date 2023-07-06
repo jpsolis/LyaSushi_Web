@@ -41,7 +41,7 @@ function ejecutarAccion(accion, id, descripcion, precio)
 
         alert("Confirma "+accion+" el registro " +id+"?")
                
-        let url = "http://localhost/LyaSushi_Api_v2/Handroll/api/Handroll/Edit";
+        let url = "https://www.apirestaurant.somee.com/api/Handroll/Editar/";
         let registro = {
         "idHandroll": id,
         "descripcion": descripcion,
@@ -70,7 +70,7 @@ function ejecutarAccion(accion, id, descripcion, precio)
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +id+" ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Handroll/api/Handroll/Delete/" +id;
+        let url = "https://www.apirestaurant.somee.com/api/Handroll/Eliminar/" +id;
         console.log("URL: " +url);
 
         let registro = {
@@ -101,7 +101,7 @@ function ejecutarAccion(accion, id, descripcion, precio)
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Handroll/api/Handroll/Create";
+        let url = "https://www.apirestaurant.somee.com/api/Handroll/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -139,24 +139,24 @@ function cargarGrilla()
     console.log('cargar grilla handroll...')
    
 
-    const tabla = document.querySelector('#tablaHandroll tbody')
+    const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://localhost/LyaSushi_Api_v2/Handroll/api/Handroll/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Handroll/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
-     data.forEach(element => {
+     for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
-        <td>${element.idHandroll}</td>
-        <td>${element.descripcion}</td>
-        <td>${element.precio}</td>
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${element.idHandroll}', '${element.descripcion}', '${element.precio}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${element.idHandroll}', '${element.descripcion}', '${element.precio}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
+        <td data-cell="idHandroll">${data.response[i].idHandroll}</td>
+        <td data-cell="descripcion">${data.response[i].descripcion}</td>
+        <td data-cell="precio">${data.response[i].precio}</td>
+        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idHandroll}', '${data.response[i].descripcion}', '${data.response[i].precio}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idHandroll}', '${data.response[i].descripcion}', '${data.response[i].precio}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
         `;
 
         tabla.appendChild(fila);
-     });
+     }
    
 });
 
@@ -166,28 +166,26 @@ cargarMenu();
 }
 
 function cargarMenu() {
-
-
    
     let contentHTML = '';
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);
-      for(let i = 0; i < data.length; i++){
+      for(let i = 0; i < data.response.length; i++){
 
         const row = document.createElement("tr");
 
-        console.log("Descripcion: " +data[i].descripcion)
+        console.log("Descripcion: " +data.response[i].descripcionMenu)
 
         contentHTML +=
 
-        `<a href="${data[i].pathMenu}">
+        `<a href="${data.response[i].pathMenu}">
             <i class="fas fa-home"></i>
-            <p>${data[i].descripcionMenu}</p>
+            <p>${data.response[i].descripcionMenu}</p>
         </a>`;
 
 

@@ -49,7 +49,7 @@ function ejecutarAccion(accion, codInventario, idProveedor, idIngrediente, iCodU
 
         alert("Confirma "+accion+" el registro " +codInventario+"?")
                
-        let url = "http://localhost/LyaSushi_Api_v2/InventarioIngrediente/api/InventarioIngrediente/Edit";
+        let url = "ttps://www.apirestaurant.somee.com/api/Inventario/Editar/";
         let registro = {
         "codInventario": codInventario,
         "idProveedor": idProveedor,
@@ -82,7 +82,7 @@ function ejecutarAccion(accion, codInventario, idProveedor, idIngrediente, iCodU
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +codInventario+" ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/InventarioIngrediente/api/InventarioIngrediente/Delete/" +codInventario;
+        let url = "ttps://www.apirestaurant.somee.com/api/Inventario/Eliminar/" +codInventario;
         console.log("URL: " +url);
 
         let registro = {
@@ -116,7 +116,7 @@ function ejecutarAccion(accion, codInventario, idProveedor, idIngrediente, iCodU
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/InventarioIngrediente/api/InventarioIngrediente/Create";
+        let url = "ttps://www.apirestaurant.somee.com/api/Ingrediente/Guardar/";
         //let url = "https://localhost:7042/InventarioIngrediente/api/InventarioIngrediente/Create";
         console.log("URL: " +url);
 
@@ -164,29 +164,29 @@ function cargarGrilla()
 {
     console.log('cargar grilla inventario...')   
 
-    const tabla = document.querySelector('#tablaInventario tbody')
+    const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://localhost/LyaSushi_Api_v2/InventarioIngrediente/api/InventarioIngrediente/Get')
+    fetch('https://www.apirestaurant.somee.com/api/InventarioIngrediente/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
-     data.forEach(element => {
+     for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
-        <td>${element.codInventario}</td>
-        <td>${element.idProveedor}</td>        
-        <td>${element.idIngrediente}</td>        
-        <td>${element.iCodUnidad}</td>        
-        <td>${element.costoUnitario}</td>        
-        <td>${element.cantidad}</td>        
-        <td>${element.valorEnInventario}</td>        
-        <td>${element.dFechaInventario}</td>        
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${element.codInventario}', '${element.idProveedor}', '${element.idIngrediente}', '${element.iCodUnidad}','${element.costoUnitario}','${element.cantidad}','${element.valorEnInventario}','${element.dFechaInventario}','Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${element.codInventario}', '${element.idProveedor}', '${element.idIngrediente}', '${element.iCodUnidad}','${element.costoUnitario}','${element.cantidad}','${element.valorEnInventario}','${element.dFechaInventario}','Eliminar')"><i class="fa fa-trash"></i></a></td>
+        <td data-cell="código inventario">${data.response[i].codInventario}</td>
+        <td data-cell="id proveedor">${data.response[i].idProveedor}</td>        
+        <td data-cell="id ingrediente">${data.response[i].idIngrediente}</td>        
+        <td data-cell="código unidad">${data.response[i].iCodUnidad}</td>        
+        <td data-cell="costo unidad">${data.response[i].costoUnitario}</td>        
+        <td data-cell="cantidad">${data.response[i].cantidad}</td>        
+        <td data-cell="valor en inventario">${data.response[i].valorEnInventario}</td>        
+        <td data-cell="fecha inventario">${data.response[i].dFechaInventario}</td>        
+        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].codInventario}', '${data.response[i].idProveedor}', '${data.response[i].idIngrediente}', '${data.response[i].iCodUnidad}','${data.response[i].costoUnitario}','${data.response[i].cantidad}','${data.response[i].valorEnInventario}','${data.response[i].dFechaInventario}','Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].codInventario}', '${data.response[i].idProveedor}', '${data.response[i].idIngrediente}', '${data.response[i].iCodUnidad}','${data.response[i].costoUnitario}','${data.response[i].cantidad}','${data.response[i].valorEnInventario}','${data.response[i].dFechaInventario}','Eliminar')"><i class="fa fa-trash"></i></a></td>
         `;
 
         tabla.appendChild(fila);
-     });
+     }
    
 });
 
@@ -203,21 +203,21 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);
-      for(let i = 0; i < data.length; i++){
+      for(let i = 0; i < data.response.length; i++){
 
         const row = document.createElement("tr");
 
-        console.log("Descripcion: " +data[i].descripcionMenu)
+        console.log("Descripcion: " +data.response[i].descripcionMenu)
 
         contentHTML +=
 
-        `<a href="${data[i].pathMenu}">
+        `<a href="${data.response[i].pathMenu}">
             <i class="fas fa-home"></i>
-            <p>${data[i].descripcionMenu}</p>
+            <p>${data.response[i].descripcionMenu}</p>
         </a>`;
 
 

@@ -1,202 +1,181 @@
-function modalEditar(id, desc, accion){
-   
-    var modal = document.getElementById("myModal");
+function modalEditar(id, desc, accion) {
+
+    var modal = document.getElementById("myModal");   
     document.getElementById("titulo").innerText = accion + " registro";
 
-    if(accion == "Insertar")
-    {        
-        
-        
-        document.getElementById('lblIngrediente').style.display = 'none';        
-        document.getElementById('idIngrediente').style.display = 'none'; 
-        document.getElementById('accion').value = "Insertar";
+    if (accion == "Insertar") {
+
+
+        document.getElementById('lblIdIngrediente').style.display = 'none';
+        document.getElementById('idIngrediente').style.display = 'none';
+        document.getElementById("accion").value = "Insertar";
     }
-    else{
+    else {
         document.getElementById("idIngrediente").value = id;
-        document.getElementById("descripcion").value = desc;        
+        document.getElementById("descripcion").value = desc;
         document.getElementById("accion").value = accion;
-    
+
     }
-    modal.style.display = "block";    
+    modal.style.display = "block";
 
 }
 
-function cierreModal(){
+function cierreModal() {
 
     var modal = document.getElementById("myModal");
     var span = document.getElementsByClassName("cierre")[0];
-      span.onclick = function(){
+    span.onclick = function () {
         modal.style.display = "none";
     }
 }
 
-function ejecutarAccion(accion, id, descripcion)
-{
-    console.log("Ejecutar accion " +accion+ " "+id+" "+descripcion);
-    if(accion == "Editar")
-    {
+function ejecutarAccion(accion, id, descripcion) {
+    console.log("Ejecutar accion " + accion + " " + id + " " + descripcion);
+    if (accion == "Editar") {
 
         http://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
 
-        alert("Confirma "+accion+" el registro " +id+"?")
-               
-        let url = "http://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Edit";
+        alert("Confirma " + accion + " el registro " + id + "?")
+
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Editar/";
+        
         let registro = {
-        "idHandroll": id,
-        "descripcion": descripcion,        
-        "tabHandrollIngredientes": []
+            "idIngrediente": id,
+            "descripcion": descripcion           
         }
 
         let options = {
-        method: "PUT",
-        headers:{
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify(registro),
+            method: "PUT",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(registro),
         }
 
         fetch(url, options)
-        .then(response => console.log(response.status))
+            .then(response => alert(response.status))
 
         alert("Registro modificado...")
 
         location.reload();
-        
-       
-       
-    }
-    else if(accion == "Eliminar"){
-        alert("Confirma "+accion+" el registro " +id+" ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Delete/" +id;
-        console.log("URL: " +url);
 
-        let registro = {
-         "idHandroll": id,
-         "descripcion": descripcion,         
-         "tabHandrollIngredientes": []
-       }
-
-       let options = {
-         method: "DELETE",
-         headers:{
-             'Content-type': 'application/json'
-         },
-         body: JSON.stringify(registro),
-       }
-
-       fetch(url, options)
-       .then(response => console.log(response.status))
-
-       alert("Registro eliminado...")
-
-       location.reload();
-       
 
     }
+    else if (accion == "Eliminar") {
+        alert("Confirma " + accion + " el registro " + id + " ?");
 
-    else{
-        alert("Confirma "+accion+" el registro ?");
-
-        let url = "http://localhost/LyaSushi_Api_v2/Handroll/api/Handroll/Create";
-        console.log("URL: " +url);
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Eliminar/" + id;
+        console.log("URL: " + url);
 
         let registro = {
-        // "idHandroll": id,
-         "descripcion": descripcion,         
-         "tabHandrollIngredientes": []
-       }
+            "idIngrediente": id,
+            "descripcion": descripcion           
+        }
 
-       let options = {
-         method: "POST",
-         headers:{
-             'Content-type': 'application/json'
-         },
-         body: JSON.stringify(registro),
-       }
+        let options = {
+            method: "DELETE",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(registro),
+        }
 
-       fetch(url, options)
-       .then(response => console.log(response.status))
+        fetch(url, options)
+            .then(response => console.log(response.status))
 
-       alert("Registro ingresado...")
+        alert("Registro eliminado...")
 
-       location.reload();
-       
-
-      
+        location.reload();
 
 
+    }
+
+    else {
+        alert("Confirma " + accion + " el registro ?");
+
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Guardar/";
+        console.log("URL: " + url);
+
+        let registro = {
+            // "idHandroll": id,
+            "descripcion": descripcion           
+        }
+
+        let options = {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(registro),
+        }
+
+        fetch(url, options)
+            .then(response => console.log(response.status))
+
+        alert("Registro ingresado...")
+
+        location.reload();
     }
 }
 
 
-function cargarGrilla()
-{
+function cargarGrilla() {
     console.log('cargar grilla ingrediente...')
-   
 
-    const tabla = document.querySelector('#tablaIngrediente tbody')
+    const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Get')
-    .then((response) => response.json())
-    .then((data) => {
-     console.log(data)
-     data.forEach(element => {
-        const fila = document.createElement('tr');
-        fila.innerHTML += `
-        <td>${element.idIngrediente}</td>
-        <td>${element.descripcion}</td>        
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${element.idIngrediente}', '${element.descripcion}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${element.idIngrediente}', '${element.descripcion}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
+    // fetch('http://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Ingrediente/Lista/')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+
+            for (let i = 0; i < data.response.length; i++) {
+                const fila = document.createElement('tr');
+                fila.innerHTML += `
+        <td data-cell="idIngrediente">${data.response[i].idIngrediente}</td>
+        <td data-cell="descripcion">${data.response[i].descripcion}</td>        
+        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idIngrediente}', '${data.response[i].descripcion}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idIngrediente}', '${data.response[i].descripcion}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
         `;
+                tabla.appendChild(fila);
+            }
+        });
 
-        tabla.appendChild(fila);
-     });
-   
-});
-
-cargarMenu();
-
-
+    cargarMenu();
+    //cargarBarraMenu();
 }
 
 function cargarMenu() {
 
-
-   
     let contentHTML = '';
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
-    .then((response) => response.json())
-    .then((data) => {
-     console.log("lalala " +data);
-      for(let i = 0; i < data.length; i++){
+    // fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("lalala " + data);
+            for (let i = 0; i < data.response.length; i++) {
 
-        const row = document.createElement("tr");
+                const row = document.createElement("tr");
 
-        console.log("Descripcion: " +data[i].descripcion)
+                console.log("Descripcion: " + data.response[i].descripcionMenu )
 
-        contentHTML +=
+                contentHTML +=
 
-        `<a href="${data[i].pathMenu}">
+                    `<a href="${data.response[i].pathMenu}">
             <i class="fas fa-home"></i>
-            <p>${data[i].descripcionMenu}</p>
+            <p>${data.response[i].descripcionMenu}</p>
         </a>`;
 
 
-    }
+            }
 
+            itemsMenu.innerHTML = contentHTML;
 
-    itemsMenu.innerHTML = contentHTML;
-    
+        });
 
-   
-     });
-     
-
-      
-    
-    
 }

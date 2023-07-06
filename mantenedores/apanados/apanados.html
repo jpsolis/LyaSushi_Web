@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="../../scripts/scriptApanados.js"></script>    
-    <link rel="stylesheet" href="../../css/styleApanados.css" />
+    <link rel="stylesheet" href="../../css/styleIngredientes.css" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -15,7 +17,9 @@
 <body onload="cargarGrilla()">
 
 
+    
     <div class="sidebar">
+       
         <nav>
             <ul>
                 
@@ -37,8 +41,8 @@
             <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '','','','Insertar')" ; />
         </div>
         <br><br>
-        <div id="grillaApanados">
-            <table id="tablaApanados">
+        <div id="grilla">
+            <table id="tabla">
                 <thead>
                     <tr>
                         <th>Id Apanado</th>
@@ -59,10 +63,45 @@
 
     </div>
 
-    <div class="modal" id="myModal">
+    <dialog open id="myModal" class="modal">
+      
+        <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>
+        <h2 id="titulo" class="form__title"></h2>
+        <div class="form__container">
+            <div class="form__group">
+                <input type="text" name="idApanado" id="idApanado" class="form__input" placeholder=" ">
+                <label for="idApanado" class="form__label">Id Apanado :</label>
+                <span class="form__line"></span>
+            </div>
+            <div class="form__group">
+                <input type="text" name="descripcionApanado" id="descripcionApanado" class="form__input" placeholder=" ">
+                <label for="descripcionApanado" class="form__label">Descripción :</label>
+                <span class="form__line"></span>
+            </div>
+            <div class="form__group">
+                <input type="text" name="precioUnitario" id="precioUnitario" class="form__input" placeholder=" ">
+                <label for="precioUnitario" class="form__label">Precio Unitario :</label>
+                <span class="form__line"></span>
+            </div>
+            <div class="form__group">
+                <input type="text" name="precio" id="precio" class="form__input" placeholder=" ">
+                <label for="precio" class="form__label">Precio :</label>
+                <span class="form__line"></span>
+            </div>
+            <div class="form__group">
+                <input type="text" name="cantidad" id="cantidad" class="form__input" placeholder=" ">
+                <label for="cantidad" class="form__label">Cantidad :</label>
+                <span class="form__line"></span>
+            </div>
+            <input type="button" id="accion" class="boton"
+            onclick="ejecutarAccion(this.value, idIngrediente.value, descripcion.value);" />                                    
 
+        </div>
 
-        <div class="contenido-modal">
+    </dialog>
+        
+        
+        <!-- <div class="contenido-modal">
             <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>
         
             <form action="" >
@@ -125,7 +164,7 @@
         </form>
 
     </div>
-    </div>
+    </div> -->
 
 
 
