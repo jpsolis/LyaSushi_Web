@@ -9,6 +9,7 @@ function modalEditar(iCodUnidad, vDescripcion, accion){
         
         document.getElementById('lbliCodUnidad').style.display = 'none';        
         document.getElementById('iCodUnidad').style.display = 'none'; 
+        document.getElementById('vDescripcion').style.display = 'none'; 
         document.getElementById('accion').value = "Insertar";
     }
     else{
@@ -40,7 +41,7 @@ function ejecutarAccion(accion, iCodUnidad, vDescripcion)
 
         alert("Confirma "+accion+" el registro " +iCodUnidad+"?")
                
-        let url = "http://localhost/LyaSushi_Api_v2/Unidad/api/Unidad/Edit";
+        let url = "https://www.apirestaurant.somee.com/api/Unidad/Editar/";
         let registro = {
         "iCodUnidad": iCodUnidad,
         "vDescripcion": vDescripcion               
@@ -67,7 +68,7 @@ function ejecutarAccion(accion, iCodUnidad, vDescripcion)
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +iCodUnidad+" ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Unidad/api/Unidad/Delete/" +iCodUnidad;
+        let url = "https://www.apirestaurant.somee.com/api/Unidad/Eliminar/" +iCodUnidad;
         console.log("URL: " +url);
 
         let registro = {
@@ -96,7 +97,7 @@ function ejecutarAccion(accion, iCodUnidad, vDescripcion)
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Unidad/api/Unidad/Create";
+        let url = "https://www.apirestaurant.somee.com/api/Unidad/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -132,23 +133,23 @@ function cargarGrilla()
     console.log('cargar grilla unidades...')
    
 
-    const tabla = document.querySelector('#tablaUnidades tbody')
+    const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://localhost/LyaSushi_Api_v2/Unidad/api/Unidad/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Unidad/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
-     data.forEach(element => {
+     for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
-        <td>${element.iCodUnidad}</td>
-        <td>${element.vDescripcion}</td>        
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${element.iCodUnidad}', '${element.vDescripcion}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${element.iCodUnidad}', '${element.vDescripcion}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
+        <td data-cell="código unidad">${data.response[i].iCodUnidad}</td>
+        <td data-cell="descripción">${data.response[i].vDescripcion}</td>        
+        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].iCodUnidad}', '${data.response[i].vDescripcion}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].iCodUnidad}', '${data.response[i].vDescripcion}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
         `;
 
         tabla.appendChild(fila);
-     });
+     }
    
 });
 
@@ -165,21 +166,21 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);
-      for(let i = 0; i < data.length; i++){
+      for(let i = 0; i < data.response.length; i++){
 
         const row = document.createElement("tr");
 
-        console.log("Descripcion: " +data[i].descripcionMenu)
+        console.log("Descripcion: " +data.response[i].descripcionMenu)
 
         contentHTML +=
 
-        `<a href="${data[i].pathMenu}">
+        `<a href="${data.response[i].pathMenu}">
             <i class="fas fa-home"></i>
-            <p>${data[i].descripcionMenu}</p>
+            <p>${data.response[i].descripcionMenu}</p>
         </a>`;
 
 

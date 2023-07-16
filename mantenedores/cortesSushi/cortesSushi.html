@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="../../scripts/scriptCortesSushi.js"></script>    
-    <link rel="stylesheet" href="../../css/styleCortesSushi.css" />
+    <link rel="stylesheet" href="../../css/styleIngredientes.css" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -34,11 +35,17 @@
 
         <br>
         <div>            
-            <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '','','Insertar')" ; />
-        </div>
-        <br><br>
-        <div id="grillaCorteSushi">
-            <table id="tablaCorteSushi">
+            <!-- <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '','','Insertar')" ; /> -->
+        </div>      
+        <div id="grilla">
+            <div>
+            <table id="tabla">
+                <caption>
+                    <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '','','Insertar')" ; />
+                </caption>
+                <caption>
+                    <br>
+                </caption>
                 <thead>
                     <tr>
                         <th>Id Cortes Sushi</th>
@@ -59,68 +66,37 @@
 
     </div>
 
-    <div class="modal" id="myModal">
-
-
-        <div class="contenido-modal">
-            <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>
+    <dialog open id="myModal" class="modal">
         
-            <form action="" >
-                <div>
+            <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>
+            <h2 id="titulo" class="form__title"></h2>
+            <div class="form__container">
+                <div class="form__group">
+                    <input type="text" name="idCortesSushi" id="idCortesSushi" class="form__input" placeholder=" ">
+                    <label for="idCortesSushi" id="lblidCortesSushi" class="form__label">Id cortes sushi :</label>
+                    <span class="form__line"></span>
+                </div>
+                <div class="form__group">
+                    <input type="text" name="descripcion" id="descripcion" class="form__input" placeholder=" ">
+                    <label for="descripcion" id="lbldescripcion" class="form__label">Descripción :</label>
+                    <span class="form__line"></span>
+                </div>
+                <div class="form__group">
+                    <input type="text" name="cantidad" id="cantidad" class="form__input" placeholder=" ">
+                    <label for="cantidad" id="lblcantidad" class="form__label">Cantidad :</label>
+                    <span class="form__line"></span>
+                </div>
 
-                    <table class="tablaCorteSushi" >
-                        
-                        <header id="titulo" class="encabezado"></header>
-                        <br>
-                            <tr>
-                                <td>
-                                <label id="lblidCortesSushi">Id Corte Sushi</label>
-                                </td>
-                                <td>
-                                    <input type="text" id="idCortesSushi" readonly />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Descripción
-                                </td>
-                                <td>
-                                    <input type="text" id="descripcion" />
-                                </td>
-                            </tr>                           
-
-                            <tr>
-                                <td>
-                                    Cantidad
-                                </td>
-                                <td>
-                                    <input type="text" id="cantidad" />
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Precio
-                                </td>
-                                <td>
-                                    <input type="text" id="precio" />
-                                </td>
-                            </tr>
-
-                           
-                        
-                            <tr>
-                                <td>
-                                    <input type="button" id="accion" class="boton"
-                                            onclick="ejecutarAccion(this.value, idCortesSushi.value, descripcion.value, cantidad.value, precio.value );" />                                    
+                <div class="form__group">
+                    <input type="text" name="precio" id="precio" class="form__input" placeholder=" ">
+                    <label for="precio" id="lblprecio" class="form__label">Precio :</label>
+                    <span class="form__line"></span>
+                </div>        
+                <input type="button" id="accion" class="boton"
+                    onclick="ejecutarAccion(this.value, idCortesSushi.value, descripcion.value, cantidad.value, precio.value );" />                                    
                 </div>
                 
-        </form>
-
-    </div>
-    </div>
-
-
+            </dialog>
 
 </body>
 

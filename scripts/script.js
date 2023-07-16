@@ -1,32 +1,19 @@
-// document.querySelector("#submitLogin").onclick = function(){
-//     alert("estamos aqui");
-// }
-
-
-
-
-// http://localhost/LyaSushi_Api_v2/usuario/api/usuario/Details/administrador666/YWRtaW4=?usuario=administrador666&password=YWRtaW4=
-
-
 function usuarioValido(user, password)
 {
 
      var encriptado = CryptoJS.AES.encrypt(password, "12345");
     // alert("Encriptado: " +encriptado);
     
-        fetch('http://localhost/LyaSushi_Api_v2/Usuario/api/Usuario/Get/'+user+'?'+'usuario='+user,
-        {method: 'GET'})
+        fetch('https://www.apirestaurant.somee.com/api/Usuario/Obtener/'+user)
         .then((response) =>{
             response.json().then((jsonResponse) => {
-                console.log(jsonResponse.nombreUsuario +"-"+ jsonResponse.passUsuario);   
-                console.log("Password ingresada : " +password) 
+              console.log(jsonResponse.response.nombreUsuario);   
                 
+                console.log("Password ingresada : " +password) 
 
-
-                var desencriptado = CryptoJS.AES.decrypt(jsonResponse.passUsuario, '12345').toString(CryptoJS.enc.Utf8); 
+                var desencriptado = CryptoJS.AES.decrypt(jsonResponse.response.passUsuario, '12345').toString(CryptoJS.enc.Utf8); 
             
-
-                console.log("Password de json asi tal cual : " +jsonResponse.passUsuario) ;
+                console.log("Password de json asi tal cual : " +jsonResponse.response.passUsuario) ;
                 console.log("Password de json pero desencriptada : " +desencriptado) ;
 
                 if(password === desencriptado)
@@ -72,13 +59,6 @@ function submitLogin() {
 }
 
 
-
-
-
-
-
-
-
 //http://localhost/LyaSushi_Api_v2/menu/api/menu
 
 function cargarMenu() {
@@ -87,42 +67,33 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-
     let loader = '<div class="loader"></div>';
     document.getElementById('center-screen').innerHTML = loader;
 
 
-
-    fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data);
-      for(let i = 0; i < data.length; i++){
+      for(let i = 0; i < data.response.length; i++){
 
         const row = document.createElement("tr");
 
-        console.log("Descripcion: " +data[i].descripcionMenu)
+        console.log("Descripcion: " +data.response[i].descripcionMenu)
+        console.log("Path: " +data.response[i].pathMenu)
 
         contentHTML +=
 
-        `<a href="${data[i].pathMenu}">
+        `<a href="${data.response[i].pathMenu}">
             <i class="fas fa-home"></i>
-            <p>${data[i].descripcionMenu}</p>
+            <p>${data.response[i].descripcionMenu}</p>
         </a>`;
-
 
     }
 
-
     itemsMenu.innerHTML = contentHTML;
 
-    document.getElementById('center-screen').innerHTML = '';
-    
-
+    document.getElementById('center-screen').innerHTML = '';    
    
      });
-
-      
-    
-    
 }

@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="../../scripts/scriptSalsas.js"></script>    
-    <link rel="stylesheet" href="../../css/styleSalsas.css" />
+    <link rel="stylesheet" href="../../css/styleIngredientes.css" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -34,11 +35,20 @@
 
         <br>
         <div>            
-            <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '','','','Insertar')" ; />
+            <!-- <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '','','','Insertar')" ; /> -->
         </div>
         <br><br>
-        <div id="grillaSalsas">
-            <table id="tablaSalsas">
+        <div id="grilla">
+            <div>
+                
+            <table id="tabla">
+                <caption>
+                    <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '','','','Insertar')" ; />
+                </caption>
+                <caption>
+                    <br>
+                </caption>
+                
                 <thead>
                     <tr>
                         <th>Id Salsa</th>
@@ -54,75 +64,46 @@
 
                 </tbody>
             </table>
+            </div>
         </div>
 
 
     </div>
 
-    <div class="modal" id="myModal">
+    <dialog class="modal" id="myModal">
 
-
-        <div class="contenido-modal">
-            <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>
-           
-            <form action="" >
-                <div>
-
-                    <table class="tablaSalsas" >
-                        
-                         <header id="titulo" class="encabezado"></header>
-                         <br>
-                            <tr>
-                                <td>
-                                   <label id="lblSalsa">Id Salsa</label>
-                                </td>
-                                <td>
-                                    <input type="text" id="idSalsa" readonly />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Descripción
-                                </td>
-                                <td>
-                                    <input type="text" id="descripcionSalsa" />
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Precio Unitario
-                                </td>
-                                <td>
-                                    <input type="text" id="precioUnitario" />
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Precio
-                                </td>
-                                <td>
-                                    <input type="text" id="precio" />
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Cantidad
-                                </td>
-                                <td>
-                                    <input type="text" id="cantidad" />
-                                </td>
-                            </tr>
-                           
-                            <tr>
-                                <td>
-                                    <input type="button" id="accion" class="boton"
-                                            onclick="ejecutarAccion(this.value, idSalsa.value, descripcionSalsa.value, precioUnitario.value, precio.value, cantidad.value);" />                                    
-                </div>
-                
-        </form>
+            <span class="cierre" id="cierre" onclick="cierreModal()"><i class="fa fa-close"></i></span>           
+           <h2 id="titulo" class="form__title"></h2>
+        <div class="form__container">
+            <div class="form__group">
+                <input type="text" id="idSalsa" class="form__input" placeholder=" " readonly/>
+                <label for="idSalsa" id="lblSalsa" class="form__label">Id Salsa :</label>
+                <span class="form__line"></span>              
+            </div>
+            <div class="form__group">
+                <input type="text" id="descripcionSalsa" class="form__input" placeholder=" "/>
+                <label for="descripcionSalsa" id="lbldescripcionSalsa" class="form__label">Descripción :</label>
+                <span class="form__line"></span>
+            </div>
+             <div class="form__group">
+                <input type="text" id="precioUnitario" class="form__input" placeholder=" "/>
+                <label for="precioUnitario" id="lblprecioUnitario" class="form__label">Precio Unitario :</label>
+                <span class="form__line"></span>
+            </div>
+            <div class="form__group">
+                <input type="text" id="precio" class="form__input" placeholder=" "/>
+                <label for="precio" id="lblPrecio" class="form__label">Precio :</label>
+                <span class="form__line"></span>
+            </div>   
+            <div class="form__group">
+                <input type="text" id="cantidad" class="form__input" placeholder=" "/>
+                <label for="cantidad" id="lblCantidad" class="form__label">Cantidad :</label>
+                <span class="form__line"></span>
+            </div>                                                                                                                               
+                <input type="button" id="accion" class="boton"
+                onclick="ejecutarAccion(this.value, idSalsa.value, descripcionSalsa.value, precioUnitario.value, precio.value, cantidad.value);" />                                    
+        </div>
+        </dialog>                       
 
     </div>
     </div>

@@ -4,9 +4,7 @@ function modalEditar(idMenu, descripcionMenu, pathMenu, accion){
     document.getElementById("titulo").innerText = accion + " registro";
 
     if(accion == "Insertar")
-    {        
-        
-        
+    {   
         document.getElementById('lblidMenu').style.display = 'none';        
         document.getElementById('idMenu').style.display = 'none'; 
         document.getElementById('accion').value = "Insertar";
@@ -41,7 +39,7 @@ function ejecutarAccion(accion, idMenu, descripcionMenu, pathMenu)
 
         alert("Confirma "+accion+" el registro " +idMenu+"?")
                
-        let url = "http://localhost/LyaSushi_Api_v2/Menu/api/Menu/Edit";
+        let url = "https://www.apirestaurant.somee.com/api/Menu/Editar/";
         let registro = {
         "idMenu": idMenu,
         "descripcionMenu": descripcionMenu,
@@ -61,19 +59,17 @@ function ejecutarAccion(accion, idMenu, descripcionMenu, pathMenu)
 
         alert("Registro modificado...")
 
-        location.reload();
-        
-       
-       
+        location.reload();                      
     }
+
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +idMenu+" ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Menu/api/Menu/Delete/" +idMenu;
+        let url = "https://www.apirestaurant.somee.com/api/Menu/Eliminar/" +idMenu;
         console.log("URL: " +url);
 
         let registro = {
-            "idMenu": idMenu,
+        "idMenu": idMenu,
         "descripcionMenu": descripcionMenu,
         "pathMenu": pathMenu              
        }
@@ -91,15 +87,14 @@ function ejecutarAccion(accion, idMenu, descripcionMenu, pathMenu)
 
        alert("Registro eliminado...")
 
-       location.reload();
-       
+       location.reload();       
 
     }
 
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://localhost/LyaSushi_Api_v2/Menu/api/Menu/Create";
+        let url = "https://www.apirestaurant.somee.com/api/Menu/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -136,28 +131,39 @@ function cargarGrilla()
     console.log('cargar grilla menu...')
    
 
-    const tabla = document.querySelector('#tablaMenu tbody')
+    const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://localhost/LyaSushi_Api_v2/Menu/api/Menu/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
-     console.log(data)
-     data.forEach(element => {
+     console.log("blablablaa" +data)
+    //  data.forEach(element => {
+    //     const fila = document.createElement('tr');
+    //     fila.innerHTML += `
+    //     <td>${element.idMenu}</td>
+    //     <td>${element.descripcionMenu}</td>        
+    //     <td>${element.pathMenu}</td>        
+    //     <td><a href="#" id="btnEditar" onclick="modalEditar('${element.idMenu}', '${element.descripcionMenu}', '${element.pathMenu}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+    //     <td><a href="#" id="btnEliminar" onclick="modalEditar('${element.idMenu}', '${element.descripcionMenu}', '${element.pathMenu}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
+    //     `;
+
+    //     tabla.appendChild(fila);
+    //  });
+    for (let i = 0; i < data.response.length; i++) {
         const fila = document.createElement('tr');
         fila.innerHTML += `
-        <td>${element.idMenu}</td>
-        <td>${element.descripcionMenu}</td>        
-        <td>${element.pathMenu}</td>        
-        <td><a href="#" id="btnEditar" onclick="modalEditar('${element.idMenu}', '${element.descripcionMenu}', '${element.pathMenu}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td><a href="#" id="btnEliminar" onclick="modalEditar('${element.idMenu}', '${element.descripcionMenu}', '${element.pathMenu}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
-        `;
-
-        tabla.appendChild(fila);
-     });
-   
+<td>${data.response[i].idMenu}</td>
+<td>${data.response[i].descripcionMenu}</td>        
+<td>${data.response[i].pathMenu}</td>        
+<td><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idMenu}', '${data.response[i].descripcionMenu}', '${data.response[i].pathMenu}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+<td><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idMenu}', '${data.response[i].descripcionMenu}', '${data.response[i].pathMenu}','Eliminar')"> <i class="fa fa-trash"></i></a></td>
+`;
+tabla.appendChild(fila);
+    }
 });
 
-cargarMenu();
+ cargarMenu();
+
 
 
 }
@@ -165,40 +171,38 @@ cargarMenu();
 function cargarMenu() {
 
 
-   
+
     let contentHTML = '';
 
-    const itemsMenu = document.querySelector('#item-menu');
+    let itemsMenu = '';
+    itemsMenu =  document.querySelector('#item-menu');
 
-    fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
-    .then((response) => response.json())
-    .then((data) => {
-     console.log("lalala " +data);
-      for(let i = 0; i < data.length; i++){
+    console.log("cargar barra de menu...");
 
-        const row = document.createElement("tr");
+    // fetch('http://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("lalala " + data);
+            for (let i = 0; i < data.response.length; i++) {
 
-        console.log("Descripcion: " +data[i].descripcionMenu)
+                const row = document.createElement("tr");
 
-        contentHTML +=
+                console.log("Descripcion: " + data.response[i].descripcionMenu)
 
-        `<a href="${data[i].pathMenu}">
+                contentHTML +=
+
+                    `<a href="${data.response[i].pathMenu}">
             <i class="fas fa-home"></i>
-            <p>${data[i].descripcionMenu}</p>
+            <p>${data.response[i].descripcionMenu}</p>
         </a>`;
+
 
 
     }
 
-
     itemsMenu.innerHTML = contentHTML;
     
-
-   
      });
-     
-
-      
-    
     
 }
