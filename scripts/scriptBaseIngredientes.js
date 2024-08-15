@@ -42,7 +42,7 @@ function ejecutarAccion(accion, idBaseIngrediente, idIngrediente, descripcionBas
 
         alert("Confirma "+accion+" el registro " +idBaseIngrediente+"?")
                
-        let url = "https://www.apirestaurant.somee.com/api/BaseIngrediente/Editar/";
+        let url = "http://www.apirestaurant.somee.com/api/BaseIngrediente/Editar/";
         let registro = {
         "idBaseIngrediente": idBaseIngrediente,
         "idIngrediente": idIngrediente,        
@@ -73,7 +73,7 @@ function ejecutarAccion(accion, idBaseIngrediente, idIngrediente, descripcionBas
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +idBaseIngrediente+" ?");
 
-        let url = "https://www.apirestaurant.somee.com/api/BaseIngrediente/Eliminar/" +idBaseIngrediente;
+        let url = "http://www.apirestaurant.somee.com/api/BaseIngrediente/Eliminar/" +idBaseIngrediente;
         console.log("URL: " +url);
 
         let registro = {
@@ -106,7 +106,7 @@ function ejecutarAccion(accion, idBaseIngrediente, idIngrediente, descripcionBas
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "https://www.apirestaurant.somee.com/api/BaseIngrediente/Guardar/";
+        let url = "http://www.apirestaurant.somee.com/api/BaseIngrediente/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -147,7 +147,7 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tabla tbody')
 
-    fetch('https://www.apirestaurant.somee.com/api/BaseIngrediente/Lista/')
+    fetch('http://www.apirestaurant.somee.com/api/BaseIngrediente/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
@@ -182,7 +182,7 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);

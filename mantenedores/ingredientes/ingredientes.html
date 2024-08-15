@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="../../scripts/scriptIngredientes.js"></script>    
+   
     <link rel="stylesheet" href="../../css/styleIngredientes.css" />
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
@@ -91,9 +91,30 @@
    
     </dialog>
 
+    <div class="popup" >
+      
+            <!-- <h2>Aviso</h2>
+            <button id="close">&times;</button> -->
+            <span class="cierre" id="cierre" onclick="cierrePopup()"><i class="fa fa-close"></i></span>
+            <h2 id="titulo" class="form__title">Confirmar</h2>  
+             
+            <p>Confirma cambios ?</p>            
+            <a href="#" id="btnConfirmar">Confirmar</a>
+            <a href="#" id="brnCancelar" onclick="cierrePopup()">Cancelar</a>                   
+    </div>
+
+    <div class="mensaje">
+        <span class="cierre" id="cierre" onclick="cierreMensaje()"><i class="fa fa-close"></i></span>
+        <h2 id="tipoMensaje" class="form__title"></h2>  
+        <!-- <button id="close">&times;</button> -->
+        <!-- <h2 id="tipoMensaje"></h2> -->
+        <p id="cuerpoMensaje"></p>
+        <a href="#" id="btnAceptar" onclick="cierreMensaje()">Aceptar</a>        
+    </div>
+
    
 
-
+    <script type="text/javascript" src="../../scripts/scriptIngredientes.js"></script>  
 
 </body>
 

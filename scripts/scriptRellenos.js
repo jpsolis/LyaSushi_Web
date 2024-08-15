@@ -53,7 +53,7 @@ function ejecutarAccion(accion, idRelleno, descripcion, cobroExtra, valorExtra, 
 
         alert("Confirma "+accion+" el registro " +idRelleno+"?")
                
-        let url = "https://www.apirestaurant.somee.com/api/Relleno/Editar/";
+        let url = "http://www.apirestaurant.somee.com/api/Relleno/Editar/";
         let registro = {
         "idRelleno": idRelleno,
         "descripcion": descripcion,        
@@ -81,7 +81,7 @@ function ejecutarAccion(accion, idRelleno, descripcion, cobroExtra, valorExtra, 
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +idRelleno+" ?");
 
-        let url = "https://www.apirestaurant.somee.com/api/Relleno/Eliminar/" +idRelleno;
+        let url = "http://www.apirestaurant.somee.com/api/Relleno/Eliminar/" +idRelleno;
         console.log("URL: " +url);
 
         let registro = {
@@ -112,7 +112,7 @@ function ejecutarAccion(accion, idRelleno, descripcion, cobroExtra, valorExtra, 
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "https://www.apirestaurant.somee.com/api/Relleno/Guardar/";
+        let url = "http://www.apirestaurant.somee.com/api/Relleno/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -149,7 +149,7 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tabla tbody')
 
-    fetch('https://www.apirestaurant.somee.com/api/Relleno/Lista/')
+    fetch('http://www.apirestaurant.somee.com/api/Relleno/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
@@ -183,7 +183,7 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);

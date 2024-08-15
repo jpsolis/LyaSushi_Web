@@ -4,7 +4,7 @@ function usuarioValido(user, password)
      var encriptado = CryptoJS.AES.encrypt(password, "12345");
     // alert("Encriptado: " +encriptado);
     
-        fetch('https://www.apirestaurant.somee.com/api/Usuario/Obtener/'+user)
+        fetch('http://www.apirestaurant.somee.com/api/Usuario/Obtener/'+user)
         .then((response) =>{
             response.json().then((jsonResponse) => {
               console.log(jsonResponse.response.nombreUsuario);   
@@ -71,7 +71,7 @@ function cargarMenu() {
     document.getElementById('center-screen').innerHTML = loader;
 
 
-    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data);

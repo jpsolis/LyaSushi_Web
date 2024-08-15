@@ -53,7 +53,7 @@ function ejecutarAccion(accion, idEnvolturaIngrediente, idIngrediente, descripci
 
         alert("Confirma "+accion+" el registro " +idEnvoltura+"?")
                
-        let url = "https://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Editar/";
+        let url = "http://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Editar/";
         let registro = {
             "idEnvolturaIngrediente": idEnvolturaIngrediente,
             "idIngrediente": idIngrediente,
@@ -89,7 +89,7 @@ function ejecutarAccion(accion, idEnvolturaIngrediente, idIngrediente, descripci
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +idEnvoltura+" ?");
 
-        let url = "https://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Eliminar/" +idEnvolturaIngrediente;
+        let url = "http://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Eliminar/" +idEnvolturaIngrediente;
         console.log("URL: " +url);
 
         let registro = {
@@ -124,7 +124,7 @@ function ejecutarAccion(accion, idEnvolturaIngrediente, idIngrediente, descripci
 
         alert("Cobro extra: " +cobroExtra);
 
-        let url = "https://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Guardar/";
+        let url = "http://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -164,7 +164,7 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tabla tbody')
 
-    fetch('https://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Lista/')
+    fetch('http://www.apirestaurant.somee.com/api/EnvolturaIngrediente/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
@@ -198,7 +198,7 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);

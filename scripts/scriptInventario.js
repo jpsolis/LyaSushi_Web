@@ -64,7 +64,8 @@ function ejecutarAccion(accion, codInventario, idProveedor, idIngrediente, iCodU
         let options = {
         method: "PUT",
         headers:{
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify(registro),
         }

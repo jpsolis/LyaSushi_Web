@@ -1,11 +1,15 @@
+
+window.addEventListener("load", function(){
+    this.document.querySelector(".popup").style.display = "none";
+});
+
+
 function modalEditar(id, desc, accion) {
 
     var modal = document.getElementById("myModal");   
     document.getElementById("titulo").innerText = accion + " registro";
 
     if (accion == "Insertar") {
-
-
         document.getElementById('lblIdIngrediente').style.display = 'none';
         document.getElementById('idIngrediente').style.display = 'none';
         document.getElementById("accion").value = "Insertar";
@@ -14,8 +18,8 @@ function modalEditar(id, desc, accion) {
         document.getElementById("idIngrediente").value = id;
         document.getElementById("descripcion").value = desc;
         document.getElementById("accion").value = accion;
-
     }
+
     modal.style.display = "block";
 
 }
@@ -26,19 +30,89 @@ function cierreModal() {
     var span = document.getElementsByClassName("cierre")[0];
     span.onclick = function () {
         modal.style.display = "none";
-    }
+    }    
+}
+
+function cierrePopup() {
+
+    var popup = document.querySelector(".popup");  
+    popup.style.display = "none";
+}
+
+function cierreMensaje() {
+
+    var mensaje = document.querySelector(".mensaje");  
+    mensaje.style.display = "none";
+    location.reload();
+    
 }
 
 function ejecutarAccion(accion, id, descripcion) {
     console.log("Ejecutar accion " + accion + " " + id + " " + descripcion);
     if (accion == "Editar") {
 
-        http://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Editar/";        
 
-        alert("Confirma " + accion + " el registro " + id + "?")
+        this.document.querySelector(".popup").style.display = "block";
 
-        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Editar/";
+       const boton =  document.querySelector("#btnConfirmar");
+
+        boton.addEventListener("click", function(){
+            confirmaCancela(accion,boton.id, id, descripcion);
+            cierrePopup();
+
+        });
+
+
+
+    }
+    else if (accion == "Eliminar") {       
+
+
+        this.document.querySelector(".popup").style.display = "block";
+
+        const boton =  document.querySelector("#btnConfirmar");
+
+
+
+        boton.addEventListener("click", function(){
+            confirmaCancela(accion,boton.id, id, descripcion);
+            cierrePopup();
+
+        });
+
+
+     
+
+
+    }
+
+    else if (accion == "Insertar")  {
         
+        this.document.querySelector(".popup").style.display = "block";
+
+        const boton =  document.querySelector("#btnConfirmar");
+
+
+
+        boton.addEventListener("click", function(){
+            confirmaCancela(accion,boton.id, id, descripcion);
+            cierrePopup();
+
+        });
+
+
+    }
+}
+
+
+
+function confirmaCancela(accion, idBoton, id, descripcion)
+{
+    if(idBoton == "btnConfirmar" && accion == "Editar")
+    {
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Editar/";
+            
         let registro = {
             "idIngrediente": id,
             "descripcion": descripcion           
@@ -53,17 +127,13 @@ function ejecutarAccion(accion, id, descripcion) {
         }
 
         fetch(url, options)
-            .then(response => alert(response.status))
-
-        alert("Registro modificado...")
-
-        location.reload();
-
+            .then(response =>   mensaje("Aviso", "Registro Modificado"))
 
 
     }
-    else if (accion == "Eliminar") {
-        alert("Confirma " + accion + " el registro " + id + " ?");
+    if(idBoton=="btnConfirmar" && accion == "Eliminar")
+    {
+
 
         let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Eliminar/" + id;
         console.log("URL: " + url);
@@ -82,17 +152,15 @@ function ejecutarAccion(accion, id, descripcion) {
         }
 
         fetch(url, options)
-            .then(response => console.log(response.status))
+            .then(response => mensaje("Aviso", "Registro Eliminado"))
+        
 
-        alert("Registro eliminado...")
-
-        location.reload();
-
-
+        // location.reload();
     }
 
-    else {
-        alert("Confirma " + accion + " el registro ?");
+
+    if(idBoton=="btnConfirmar" && accion == "Insertar")
+    {
 
         let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Guardar/";
         console.log("URL: " + url);
@@ -111,15 +179,27 @@ function ejecutarAccion(accion, id, descripcion) {
         }
 
         fetch(url, options)
-            .then(response => console.log(response.status))
-
-        alert("Registro ingresado...")
-
-        location.reload();
+            .then(response => mensaje("Aviso", "Registro Ingresado"))        
     }
+
+    // else{
+    //     this.document.querySelector(".popup").style.display = "none";
+
+    // }
+
 }
 
 
+function mensaje(tipoMensaje, mensaje){
+if("Aviso"){   
+    const elemento =  this.document.querySelector(".mensaje");
+    elemento.querySelector("#tipoMensaje").innerHTML = tipoMensaje;
+    elemento.querySelector("#cuerpoMensaje").innerHTML = mensaje;
+    elemento.style.display = "block";   
+}
+
+
+}
 function cargarGrilla() {
     console.log('cargar grilla ingrediente...')
 
@@ -160,18 +240,15 @@ function cargarMenu() {
             console.log("lalala " + data);
             for (let i = 0; i < data.response.length; i++) {
 
-                const row = document.createElement("tr");
+                // const row = document.createElement("tr");
 
                 console.log("Descripcion: " + data.response[i].descripcionMenu )
 
                 contentHTML +=
-
                     `<a href="${data.response[i].pathMenu}">
-            <i class="fas fa-home"></i>
-            <p>${data.response[i].descripcionMenu}</p>
-        </a>`;
-
-
+                    <i class="fas fa-home"></i>
+                    <p>${data.response[i].descripcionMenu}</p>
+                     </a>`;
             }
 
             itemsMenu.innerHTML = contentHTML;
