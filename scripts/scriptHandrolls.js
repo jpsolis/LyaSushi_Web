@@ -37,11 +37,11 @@ function ejecutarAccion(accion, id, descripcion, precio)
     if(accion == "Editar")
     {
 
-        http://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
+        https://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
 
         alert("Confirma "+accion+" el registro " +id+"?")
                
-        let url = "http://www.apirestaurant.somee.com/api/Handroll/Editar/";
+        let url = "https://www.apirestaurant.somee.com/api/Handroll/Editar/";
         let registro = {
         "idHandroll": id,
         "descripcion": descripcion,
@@ -70,7 +70,7 @@ function ejecutarAccion(accion, id, descripcion, precio)
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +id+" ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/Handroll/Eliminar/" +id;
+        let url = "https://www.apirestaurant.somee.com/api/Handroll/Eliminar/" +id;
         console.log("URL: " +url);
 
         let registro = {
@@ -101,7 +101,7 @@ function ejecutarAccion(accion, id, descripcion, precio)
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/Handroll/Guardar/";
+        let url = "https://www.apirestaurant.somee.com/api/Handroll/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -141,7 +141,7 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://www.apirestaurant.somee.com/api/Handroll/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Handroll/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
@@ -171,7 +171,7 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);

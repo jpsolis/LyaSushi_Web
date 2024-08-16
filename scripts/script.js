@@ -4,7 +4,7 @@ function usuarioValido(user, password)
      var encriptado = CryptoJS.AES.encrypt(password, "12345");
     // alert("Encriptado: " +encriptado);
     
-        fetch('http://www.apirestaurant.somee.com/api/Usuario/Obtener/'+user)
+        fetch('https://www.apirestaurant.somee.com/api/Usuario/Obtener/'+user)
         .then((response) =>{
             response.json().then((jsonResponse) => {
               console.log(jsonResponse.response.nombreUsuario);   
@@ -59,7 +59,7 @@ function submitLogin() {
 }
 
 
-//http://localhost/LyaSushi_Api_v2/menu/api/menu
+//https://localhost/LyaSushi_Api_v2/menu/api/menu
 
 function cargarMenu() {
 
@@ -71,7 +71,7 @@ function cargarMenu() {
     document.getElementById('center-screen').innerHTML = loader;
 
 
-    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data);

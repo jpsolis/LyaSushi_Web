@@ -10,7 +10,7 @@ function cargarBarraMenu() {
     document.getElementById('center-screen').innerHTML = loader;
 
 
-    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data);

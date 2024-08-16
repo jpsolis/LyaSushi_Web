@@ -40,11 +40,11 @@ function ejecutarAccion(accion, idDulce, descripcionDulce, precioUnitario, preci
     if(accion == "Editar")
     {
 
-        http://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
+        https://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
 
         alert("Confirma "+accion+" el registro " +idDulce+"?")
                
-        let url = "http://www.apirestaurant.somee.com/api/Ingrediente/Editar/";
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Editar/";
         let registro = {
             "idDulce": idDulce,
             "descripcionDulce": descripcionDulce,        
@@ -72,7 +72,7 @@ function ejecutarAccion(accion, idDulce, descripcionDulce, precioUnitario, preci
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +idDulce+" ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/Ingrediente/Eliminar/" +idDulce;
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Eliminar/" +idDulce;
         console.log("URL: " +url);
 
         let registro = {
@@ -103,7 +103,7 @@ function ejecutarAccion(accion, idDulce, descripcionDulce, precioUnitario, preci
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/Ingrediente/Guardar/";
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -140,7 +140,7 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://www.apirestaurant.somee.com/api/Dulce/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Dulce/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
@@ -174,7 +174,7 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);

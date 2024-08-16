@@ -36,11 +36,11 @@ function ejecutarAccion(accion, idProveedor, descripcionProveedor)
     if(accion == "Editar")
     {
 
-        http://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
+        https://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
 
         alert("Confirma "+accion+" el registro " +idProveedor+"?")
                
-        let url = "hhttp://www.apirestaurant.somee.com/api/Proveedor/Editar/";
+        let url = "hhttps://www.apirestaurant.somee.com/api/Proveedor/Editar/";
         let registro = {
         "idProveedor": idProveedor,
         "descripcionProveedor": descripcionProveedor               
@@ -67,7 +67,7 @@ function ejecutarAccion(accion, idProveedor, descripcionProveedor)
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +idProveedor+" ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/Proveedor/Eliminar/" +idProveedor;
+        let url = "https://www.apirestaurant.somee.com/api/Proveedor/Eliminar/" +idProveedor;
         console.log("URL: " +url);
 
         let registro = {
@@ -96,7 +96,7 @@ function ejecutarAccion(accion, idProveedor, descripcionProveedor)
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/Proveedor/Guardar/";
+        let url = "https://www.apirestaurant.somee.com/api/Proveedor/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -134,7 +134,7 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://www.apirestaurant.somee.com/api/Proveedor/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Proveedor/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
@@ -165,7 +165,7 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);

@@ -41,11 +41,11 @@ function ejecutarAccion(accion, idCortesSushi, descripcion, cantidad, precio)
     if(accion == "Editar")
     {
 
-        http://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
+        https://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
 
         alert("Confirma "+accion+" el registro " +idCortesSushi+"?")
                
-        let url = "http://www.apirestaurant.somee.com/api/CorteSushi/Editar/";
+        let url = "https://www.apirestaurant.somee.com/api/CorteSushi/Editar/";
         let registro = {
             "idCortesSushi": idCortesSushi,
             "descripcion": descripcion,                  
@@ -73,7 +73,7 @@ function ejecutarAccion(accion, idCortesSushi, descripcion, cantidad, precio)
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +idCortesSushi+" ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/CorteSushi/Eliminar/" +idCortesSushi;
+        let url = "https://www.apirestaurant.somee.com/api/CorteSushi/Eliminar/" +idCortesSushi;
         console.log("URL: " +url);
 
         let registro = {
@@ -103,7 +103,7 @@ function ejecutarAccion(accion, idCortesSushi, descripcion, cantidad, precio)
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/CorteSushi/Guardar/";
+        let url = "https://www.apirestaurant.somee.com/api/CorteSushi/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -138,7 +138,7 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://www.apirestaurant.somee.com/api/CorteSushi/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/CorteSushi/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
@@ -171,7 +171,7 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);

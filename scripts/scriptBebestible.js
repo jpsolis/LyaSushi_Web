@@ -39,11 +39,11 @@ function ejecutarAccion(accion, idBebestible, descripcionBebestible, precioUnita
     if(accion == "Editar")
     {
 
-        http://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
+        https://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
 
         alert("Confirma "+accion+" el registro " +idBebestible+"?")
                
-        let url = "http://www.apirestaurant.somee.com/api/Bebestible/Editar/";
+        let url = "https://www.apirestaurant.somee.com/api/Bebestible/Editar/";
         let registro = {
         "idBebestible": idBebestible,
         "descripcionBebestible": descripcionBebestible,        
@@ -73,7 +73,7 @@ function ejecutarAccion(accion, idBebestible, descripcionBebestible, precioUnita
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +idBebestible+" ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/Bebestible/Eliminar/" +idBebestible;
+        let url = "https://www.apirestaurant.somee.com/api/Bebestible/Eliminar/" +idBebestible;
         console.log("URL: " +url);
 
         let registro = {
@@ -105,7 +105,7 @@ function ejecutarAccion(accion, idBebestible, descripcionBebestible, precioUnita
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/Bebestible/Guardar/";
+        let url = "https://www.apirestaurant.somee.com/api/Bebestible/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -146,7 +146,7 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://www.apirestaurant.somee.com/api/Bebestible/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Bebestible/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
@@ -180,7 +180,7 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);

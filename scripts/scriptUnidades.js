@@ -37,11 +37,11 @@ function ejecutarAccion(accion, iCodUnidad, vDescripcion)
     if(accion == "Editar")
     {
 
-        http://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
+        https://localhost/LyaSushi_Api_v2/handroll/api/handroll/Edit
 
         alert("Confirma "+accion+" el registro " +iCodUnidad+"?")
                
-        let url = "http://www.apirestaurant.somee.com/api/Unidad/Editar/";
+        let url = "https://www.apirestaurant.somee.com/api/Unidad/Editar/";
         let registro = {
         "iCodUnidad": iCodUnidad,
         "vDescripcion": vDescripcion               
@@ -68,7 +68,7 @@ function ejecutarAccion(accion, iCodUnidad, vDescripcion)
     else if(accion == "Eliminar"){
         alert("Confirma "+accion+" el registro " +iCodUnidad+" ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/Unidad/Eliminar/" +iCodUnidad;
+        let url = "https://www.apirestaurant.somee.com/api/Unidad/Eliminar/" +iCodUnidad;
         console.log("URL: " +url);
 
         let registro = {
@@ -97,7 +97,7 @@ function ejecutarAccion(accion, iCodUnidad, vDescripcion)
     else{
         alert("Confirma "+accion+" el registro ?");
 
-        let url = "http://www.apirestaurant.somee.com/api/Unidad/Guardar/";
+        let url = "https://www.apirestaurant.somee.com/api/Unidad/Guardar/";
         console.log("URL: " +url);
 
         let registro = {
@@ -135,7 +135,7 @@ function cargarGrilla()
 
     const tabla = document.querySelector('#tabla tbody')
 
-    fetch('http://www.apirestaurant.somee.com/api/Unidad/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Unidad/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log(data)
@@ -166,7 +166,7 @@ function cargarMenu() {
 
     const itemsMenu = document.querySelector('#item-menu');
 
-    fetch('http://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
     .then((response) => response.json())
     .then((data) => {
      console.log("lalala " +data);
