@@ -204,12 +204,31 @@ li p{
 
 #btnNuevo {
   background-color: #A5C9CA;
-  float: right;
-  height: 35px;
-  width: 150px;
+  /* float: right; */
+  height: 25px;
+  /* width: 150px; */
   cursor : hand;
   
 }
+
+#btnBuscar {
+  background-color: #A5C9CA;
+  /* float: left; */
+  height: 25px;
+  /* width: 150px; */
+  cursor : hand;
+  
+}
+
+#txtBuscar {
+  /* background-color: #A5C9CA; */
+  /* float: right; */
+  height: 25px;
+  width: 550px;
+  cursor : hand;
+  
+}
+
 
 
 .boton {

@@ -47,11 +47,51 @@ function cierreMensaje() {
     
 }
 
+function buscar(){
+   
+
+    var texto = document.getElementById("txtBuscar").value;
+    alert("btnBuscar " +texto);
+
+    
+    
+    
+   
+
+    const tabla = document.querySelector('#tabla tbody')
+    tabla.innerHTML = '';
+
+
+
+    // fetch('https://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Get')
+    fetch('https://apirestaurant.somee.com/api/Ingrediente/Buscar/' +texto)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+
+           
+
+            for (let i = 0; i < data.response.length; i++) {
+                const fila = document.createElement('tr');
+                fila.innerHTML += `
+        <td data-cell="idIngrediente">${data.response[i].idIngrediente}</td>
+        <td data-cell="descripcion">${data.response[i].descripcion}</td>        
+        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idIngrediente}', '${data.response[i].descripcion}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idIngrediente}', '${data.response[i].descripcion}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
+        `;
+                tabla.appendChild(fila);
+            }
+        });
+
+
+
+}
+
 function ejecutarAccion(accion, id, descripcion) {
     console.log("Ejecutar accion " + accion + " " + id + " " + descripcion);
     if (accion == "Editar") {
 
-        let url = "httpss://www.apirestaurant.somee.com/api/Ingrediente/Editar/";        
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Editar/";        
 
         this.document.querySelector(".popup").style.display = "block";
 
@@ -111,7 +151,7 @@ function confirmaCancela(accion, idBoton, id, descripcion)
 {
     if(idBoton == "btnConfirmar" && accion == "Editar")
     {
-        let url = "httpss://www.apirestaurant.somee.com/api/Ingrediente/Editar/";
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Editar/";
             
         let registro = {
             "idIngrediente": id,
@@ -135,7 +175,7 @@ function confirmaCancela(accion, idBoton, id, descripcion)
     {
 
 
-        let url = "httpss://www.apirestaurant.somee.com/api/Ingrediente/Eliminar/" + id;
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Eliminar/" + id;
         console.log("URL: " + url);
 
         let registro = {
@@ -162,7 +202,7 @@ function confirmaCancela(accion, idBoton, id, descripcion)
     if(idBoton=="btnConfirmar" && accion == "Insertar")
     {
 
-        let url = "httpss://www.apirestaurant.somee.com/api/Ingrediente/Guardar/";
+        let url = "https://www.apirestaurant.somee.com/api/Ingrediente/Guardar/";
         console.log("URL: " + url);
 
         let registro = {
@@ -206,7 +246,7 @@ function cargarGrilla() {
     const tabla = document.querySelector('#tabla tbody')
 
     // fetch('https://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Get')
-    fetch('httpss://www.apirestaurant.somee.com/api/Ingrediente/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Ingrediente/Lista/')
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
@@ -234,7 +274,7 @@ function cargarMenu() {
     const itemsMenu = document.querySelector('#item-menu');
 
     // fetch('https://localhost/LyaSushi_Api_v2/menu/api/menu/Get')
-    fetch('httpss://www.apirestaurant.somee.com/api/Menu/Lista/')
+    fetch('https://www.apirestaurant.somee.com/api/Menu/Lista/')
         .then((response) => response.json())
         .then((data) => {
             console.log("lalala " + data);
