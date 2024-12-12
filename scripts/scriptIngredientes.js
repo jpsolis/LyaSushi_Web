@@ -51,12 +51,6 @@ function buscar(){
    
 
     var texto = document.getElementById("txtBuscar").value;
-    alert("btnBuscar " +texto);
-
-    
-    
-    
-   
 
     const tabla = document.querySelector('#tabla tbody')
     tabla.innerHTML = '';

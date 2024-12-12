@@ -21,6 +21,40 @@ function modalEditar(idProveedor, descripcionProveedor, accion){
 
 }
 
+function buscar(){
+   
+
+    var texto = document.getElementById("txtBuscar").value; 
+    
+    const tabla = document.querySelector('#tabla tbody')
+    tabla.innerHTML = '';
+
+
+
+    // fetch('https://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Get')
+    fetch('https://apirestaurant.somee.com/api/Proveedor/Buscar/' +texto)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+
+           
+
+            for (let i = 0; i < data.response.length; i++) {
+                const fila = document.createElement('tr');
+                fila.innerHTML += `
+        <td data-cell="idProveedor">${data.response[i].idProveedor}</td>
+        <td data-cell="descripcionProveedor">${data.response[i].descripcionProveedor}</td>           
+        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idProveedor}', '${data.response[i].descripcionProveedor}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idProveedor}', '${data.response[i].descripcionProveedor}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
+        `;
+                tabla.appendChild(fila);
+            }
+        });
+
+
+
+}
+
 function cierreModal(){
 
     var modal = document.getElementById("myModal");

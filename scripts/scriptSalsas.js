@@ -36,14 +36,8 @@ function cierreModal(){
 function buscar(){
    
 
-    var texto = document.getElementById("txtBuscar").value;
-    alert("btnBuscar " +texto);
-
+    var texto = document.getElementById("txtBuscar").value; 
     
-    
-    
-   
-
     const tabla = document.querySelector('#tabla tbody')
     tabla.innerHTML = '';
 
@@ -60,10 +54,13 @@ function buscar(){
             for (let i = 0; i < data.response.length; i++) {
                 const fila = document.createElement('tr');
                 fila.innerHTML += `
-        <td data-cell="idIngrediente">${data.response[i].idIngrediente}</td>
-        <td data-cell="descripcion">${data.response[i].descripcion}</td>        
-        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idIngrediente}', '${data.response[i].descripcion}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
-        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idIngrediente}', '${data.response[i].descripcion}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
+        <td data-cell="idSalsa">${data.response[i].idSalsa}</td>
+        <td data-cell="descripcionSalsa">${data.response[i].descripcionSalsa}</td>   
+        <td data-cell="precioUnitario">${data.response[i].precioUnitario}</td>   
+        <td data-cell="precio">${data.response[i].precio}</td>    
+        <td data-cell="cantidad">${data.response[i].cantidad}</td>        
+        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idSalsa}', '${data.response[i].descripcionSalsa}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idSalsa}', '${data.response[i].descripcionSalsa}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
         `;
                 tabla.appendChild(fila);
             }

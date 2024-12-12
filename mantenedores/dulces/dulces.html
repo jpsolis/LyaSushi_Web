@@ -39,10 +39,16 @@
         </div>      
         <div id="grilla">
             <div>
+                <label for="txtBuscar" id="lblCampo">Buscar</label>
+                <input type="text" name="txtBuscar" id="txtBuscar">
+                <input type="button" id="btnBuscar" value="Buscar registro" onclick="buscar('', '', '')" ; />
+                <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', 'Insertar')" ; />
+
+            </div>
             <table id="tabla">
-                <caption>
+                <!-- <caption>
                     <input type="button" id="btnNuevo" value="Nuevo registro" onclick="modalEditar('', '', '','','','Insertar')" ; />
-                </caption>
+                </caption> -->
                 <caption>
                     <br>
                 </caption>

@@ -156,6 +156,43 @@ function ejecutarAccion(accion, idEnvolturaIngrediente, idIngrediente, descripci
     }
 }
 
+function buscar(){
+   
+
+    var texto = document.getElementById("txtBuscar").value;
+
+    const tabla = document.querySelector('#tabla tbody')
+    tabla.innerHTML = '';
+
+
+
+    // fetch('https://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Get')
+    fetch('https://apirestaurant.somee.com/api/EnvolturaIngrediente/Buscar/' +texto)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+
+           
+
+            for (let i = 0; i < data.response.length; i++) {
+                const fila = document.createElement('tr');
+                fila.innerHTML += `
+        <td data-cell="idEnvolturaIngrediente">${data.response[i].idEnvolturaIngrediente}</td>
+        <td data-cell="idIngrediente">${data.response[i].idIngrediente}</td>   
+         <td data-cell="descripcionEnvoltura">${data.response[i].descripcionEnvoltura}</td>   
+          <td data-cell="idEnvoltura">${data.response[i].idEnvoltura}</td>        
+        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idEnvolturaIngrediente}', '${data.response[i].descripcionEnvoltura}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idEnvolturaIngrediente}', '${data.response[i].descripcionEnvoltura}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
+        `;
+                tabla.appendChild(fila);
+            }
+        });
+
+
+
+}
+
+
 
 function cargarGrilla()
 {

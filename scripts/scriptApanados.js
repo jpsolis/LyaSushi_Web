@@ -132,6 +132,43 @@ function ejecutarAccion(accion, idApanado, descripcionApanado, precioUnitario, p
     }
 }
 
+function buscar(){
+   
+
+    var texto = document.getElementById("txtBuscar").value; 
+    
+    const tabla = document.querySelector('#tabla tbody')
+    tabla.innerHTML = '';
+
+
+
+    // fetch('https://localhost/LyaSushi_Api_v2/Ingrediente/api/Ingrediente/Get')
+    fetch('https://apirestaurant.somee.com/api/Apanado/Buscar/' +texto)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+
+           
+
+            for (let i = 0; i < data.response.length; i++) {
+                const fila = document.createElement('tr');
+                fila.innerHTML += `
+        <td data-cell="idApanado">${data.response[i].idApanado}</td>
+        <td data-cell="descripcionApanado">${data.response[i].descripcionApanado}</td>   
+        <td data-cell="precioUnitario">${data.response[i].precioUnitario}</td>   
+        <td data-cell="precio">${data.response[i].precio}</td>    
+        <td data-cell="cantidad">${data.response[i].cantidad}</td>        
+        <td data-cell="editar"><a href="#" id="btnEditar" onclick="modalEditar('${data.response[i].idApanado}', '${data.response[i].descripcionApanado}', 'Editar')">  <i class="fa fa-edit"></i></a></td>
+        <td data-cell="eliminar"><a href="#" id="btnEliminar" onclick="modalEditar('${data.response[i].idApanado}', '${data.response[i].descripcionApanado}', 'Eliminar')"><i class="fa fa-trash"></i></a></td>
+        `;
+                tabla.appendChild(fila);
+            }
+        });
+
+
+
+}
+
 
 function cargarGrilla()
 {
